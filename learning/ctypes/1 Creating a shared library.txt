@@ -1,0 +1,4 @@
+
+For creating a shared c library, do the following:
+
+gcc -shared -o libhello.so -fPIC hello.c
