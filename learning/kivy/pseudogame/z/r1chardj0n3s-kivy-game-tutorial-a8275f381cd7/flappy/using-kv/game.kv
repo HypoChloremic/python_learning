@@ -1,0 +1,93 @@
+#:kivy 1.8.0
+
+<Bird>:
+    image: image
+    pos: 20, root.parent.size[1] * .5
+    Image:
+        id: image
+        source: 'images/bird.png'
+        size: self.texture_size
+        pos: root.pos
+
+<Background>:
+    image: image
+    image_dupe: image_dupe
+    Image:
+        id: image
+        source: 'images/background.png'
+        size: self.texture_size
+    Image:
+        id: image_dupe
+        source: 'images/background.png'
+        size: self.texture_size
+        pos: self.texture_size[0], 0
+
+<Ground>:
+    image: image
+    Image:
+        id: image
+        source: 'images/ground.png'
+        size: self.texture_size
+        pos: root.pos
+
+<Pipe>:
+    top_image: top_image
+    bottom_image: bottom_image
+    Image:
+        id: top_image
+        source: 'images/pipe_top.png'
+        size: self.texture_size
+        pos: root.x, root.y + 2.5 * 36
+    Image:
+        id: bottom_image
+        source: 'images/pipe_bottom.png'
+        size: self.texture_size
+        pos: root.x, root.y - self.texture_size[1]
+
+<Game>:
+    background: background
+    bird: bird
+    ground: ground
+    pipes: pipes
+    game_over_label: game_over_label
+    size: background.image.size
+    Background:
+        id: background
+    Pipes:
+        id: pipes
+    Ground:
+        id: ground
+    Bird:
+        id: bird
+    Label:
+        font_name: 'images/04B_19.ttf'
+        font_size: 40
+        center_x: root.center_x
+        top: root.top - 30
+        markup: True
+        text: "[color=ffffff]" + str(root.score) + "[/color]"
+    Label:
+        id: game_over_label
+        font_name: 'images/04B_19.ttf'
+        font_size: 40
+        center_x: root.center_x
+        top: root.top - 70
+        markup: True
+        opacity: 0
+        text: "[color=ffffff]game over[/color]"
+
+<Menu>:
+    background: background
+    ground: ground
+    size: background.image.size
+    Background:
+        id: background
+    Ground:
+        id: ground
+    Label:
+        font_name: 'images/04B_19.ttf'
+        font_size: 40
+        center_x: root.center_x
+        top: root.top - 30
+        markup: True
+        text: "[color=ffffff]tap to start[/color]"

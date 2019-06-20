@@ -1,0 +1,114 @@
+<Graphic>
+    rotate: 0
+    scale: 1
+    canvas:
+        PushMatrix
+        Scale:
+            x: self.scale
+            y: self.scale
+            origin: self.center
+        Rotate:
+            angle: self.rotate
+            origin: self.center
+        Color:
+            rgba: self.color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 1, 1, 1, 1
+        PopMatrix
+
+<Eye>
+    rotate: 0
+    scale: 1
+    canvas:
+        PushMatrix
+        Scale:
+            x: self.scale
+            y: self.scale
+            origin: self.center
+        Rotate:
+            angle: self.rotate
+            origin: self.center
+        Color:
+            rgba: 1, 1, 1, 1
+        Ellipse:
+            segments: 20
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 0, 0, 0, 1
+        Ellipse:
+            segments: 20
+            pos: (self.x + self.width * .15, self.y + self.height * .3)
+            size: (self.width * .7, self.height * .65)
+        Color:
+            rgba: 1, 1, 1, 1
+        PopMatrix
+
+<Player>:
+    size_hint: 0.1, 0.03
+    pos_hint: {'x': self.position, 'y': 0.1}
+
+<Ball>:
+    pos_hint: {'x': self.pos_hint_x, 'y': self.pos_hint_y}
+    size_hint: None, None
+    side_size:
+        min(0.02*self.parent.height, 0.02*self.parent.width)
+    size: self.side_size, self.side_size
+
+<Block>:
+    size_hint: 0.08, 0.04
+    pos_hint: {'x': self.pos_hint_x, 'y': self.pos_hint_y}
+
+<TrailBit>:
+    canvas:
+        Color:
+            rgba: self.color
+        Quad:
+            points: self.quad
+        Color:
+            rgba: 1, 1, 1, 1
+
+<Game>:
+    ball: the_ball
+    player: the_player
+    border_left: border_left
+    border_right: border_right
+    border_top: border_top
+    Ball:
+        id: the_ball
+    Player:
+        id: the_player
+    Border:
+        id: border_left
+        size_hint: .01, 1
+        pos_hint: {'x': 0, 'y': 0}
+    Border:
+        id: border_right
+        size_hint: .01, 1
+        pos_hint: {'x': .99, 'y': 0}
+    Border:
+        id: border_top
+        size_hint: 1, .01
+        pos_hint: {'x': 0, 'y': .99}
+
+<GameEndPopup>:
+    size_hint: 0.8, 0.8
+    auto_dismiss: False
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: root.message
+            font_size: 60
+            markup: True
+            halign: 'center'
+        Button:
+            size_hint_y: None
+            height: sp(80)
+            text: 'Play again?'
+            font_size: 60
+            on_release:
+                root.game.start(); root.dismiss()
+

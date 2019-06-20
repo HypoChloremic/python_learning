@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="15" tilewidth="21" tileheight="21">
+ <tileset firstgid="1" name="tiles" tilewidth="21" tileheight="21" spacing="2" margin="2">
+  <image source="tiles.png" width="692" height="370"/>
+ </tileset>
+ <layer name="background" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJztzDsOgkAUheE7CQiisogBHFCX6HplePhYgn9BRTUJU5FbfMkp/hwvIl4ppZTamRf6ZQ8YMWHGGx988QtsY/8lRiTFARlyHFHghDMuKE1YG/vPokKNBlc4tOhwwx2PwHbrn121T4nLmbj+ARPH7Q==
+  </data>
+ </layer>
+ <layer name="map" width="40" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxbysjAsJSKmNqAmm4bdd+o+0bdN+o+St0HAnVAXAPFc5DMggFs8vRy32APP3q67ygRbgQBXPGJTx4ZkBPfILc9JsJ9AxV2j3G47ySUPj0A7vuH5r6aQY4BrNzMsQ==
+  </data>
+ </layer>
+ <objectgroup color="#ff00fb" name="objects" width="40" height="15" visible="0">
+  <object x="0" y="294" width="840" height="21">
+   <properties>
+    <property name="blocker" value="tblr"/>
+   </properties>
+  </object>
+  <object name="platform" x="546" y="231" width="84" height="21">
+   <properties>
+    <property name="blocker" value="t"/>
+   </properties>
+  </object>
+  <object x="0" y="168" width="21" height="126">
+   <properties>
+    <property name="blocker" value="tblr"/>
+   </properties>
+  </object>
+  <object x="819" y="168" width="21" height="126">
+   <properties>
+    <property name="blocker" value="tblr"/>
+   </properties>
+  </object>
+  <object name="start-block" x="63" y="252" width="21" height="21">
+   <properties>
+    <property name="spawn" value="true"/>
+   </properties>
+  </object>
+  <object x="756" y="273" width="21" height="21">
+   <properties>
+    <property name="exit" value="true"/>
+   </properties>
+  </object>
+  <object name="platform" x="462" y="168" width="84" height="21">
+   <properties>
+    <property name="blocker" value="t"/>
+   </properties>
+  </object>
+  <object name="platform" x="378" y="231" width="84" height="21">
+   <properties>
+    <property name="blocker" value="t"/>
+   </properties>
+  </object>
+  <object name="platform" x="210" y="231" width="84" height="21">
+   <properties>
+    <property name="blocker" value="t"/>
+   </properties>
+  </object>
+  <object name="platform" x="294" y="168" width="84" height="21">
+   <properties>
+    <property name="blocker" value="t"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
