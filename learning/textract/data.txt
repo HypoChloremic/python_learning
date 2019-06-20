@@ -1,0 +1,3536 @@
+
+ beskrivni: 1 
+
+ stamceller: 1 
+
+ timmar: 1 
+
+ innate: 1 
+
+ substanser: 3 
+
+ rorelser: 4 
+
+ kar: 1 
+
+ relativ: 2 
+
+ overgripande: 1 
+
+ karakoch: 1 
+
+ rgen: 1 
+
+ blodet: 7 
+
+ maxpoang: 16 
+
+ sig: 6 
+
+ miljon: 1 
+
+ syra: 5 
+
+ base: 3 
+
+ uttryck: 1 
+
+ enskilda: 1 
+
+ er: 3 
+
+ inblandade: 1 
+
+ handrotens: 1 
+
+ artarblod: 1 
+
+ alveolerna: 2 
+
+ genom: 11 
+
+ anvand: 16 
+
+ exempelvis: 1 
+
+ huvuds: 1 
+
+ henne: 1 
+
+ dep: 1 
+
+ namnas: 3 
+
+ junctions: 1 
+
+ ova: 1 
+
+ ox: 1 
+
+ till: 41 
+
+ lungcirkulationens: 1 
+
+ forklara: 3 
+
+ kondral: 1 
+
+ meter: 2 
+
+ starlingkrafter: 1 
+
+ egenskaper: 3 
+
+ myokardcirkulationen: 1 
+
+ funktioner: 4 
+
+ paverkas: 1 
+
+ rulla: 1 
+
+ intrada: 1 
+
+ kemoreceptorer: 1 
+
+ kontrahera: 1 
+
+ osteocyter: 2 
+
+ leder: 5 
+
+ dra: 1 
+
+ ostrog: 1 
+
+ valbetalda: 1 
+
+ epiglottis: 1 
+
+ minutventilation: 2 
+
+ hoppar: 1 
+
+ lerna: 1 
+
+ tre: 3 
+
+ oc: 3 
+
+ rorelse: 4 
+
+ koldioxidhalt: 1 
+
+ bindvavsp: 1 
+
+ beskrivning: 2 
+
+ atgar: 1 
+
+ hematokrit: 1 
+
+ surfactant: 2 
+
+ b: 14 
+
+ redogora: 27 
+
+ platser: 1 
+
+ enbart: 1 
+
+ interfalange: 1 
+
+ la: 1 
+
+ ledbandsa: 1 
+
+ rod: 1 
+
+ frisatts: 3 
+
+ infektion: 2 
+
+ era: 1 
+
+ organisation: 3 
+
+ elastinfargning: 1 
+
+ nederst: 1 
+
+ crp: 1 
+
+ 12: 3 
+
+ cytokiner: 5 
+
+ eas: 1 
+
+ fuav: 1 
+
+ osteoklasternas: 1 
+
+ urea: 2 
+
+ handled: 1 
+
+ granul: 1 
+
+ deras: 3 
+
+ hanterar: 1 
+
+ histologi: 1 
+
+ eng: 1 
+
+ ischemi: 1 
+
+ allt: 1 
+
+ prl: 1 
+
+ ral: 1 
+
+ int: 1 
+
+ komplementfaktorer: 1 
+
+ alder: 1 
+
+ kanal: 1 
+
+ andetag: 1 
+
+ tekterar: 1 
+
+ det: 20 
+
+ typiskt: 1 
+
+ z: 1 
+
+ myofibrill: 1 
+
+ kontinuerligt: 1 
+
+ kardiovaskular: 2 
+
+ us: 1 
+
+ anvvar: 1 
+
+ jamvikterna: 2 
+
+ uppgift: 1 
+
+ var: 11 
+
+ specialicerade: 1 
+
+ odkroppar: 1 
+
+ lacker: 1 
+
+ blodkarlssystemet: 1 
+
+ pilar: 2 
+
+ storsta: 1 
+
+ acth: 1 
+
+ syntetiser: 1 
+
+ forlusterna: 2 
+
+ framga: 3 
+
+ utfora: 1 
+
+ moner: 1 
+
+ 2h: 1 
+
+ lungan: 1 
+
+ antal: 3 
+
+ ombedd: 1 
+
+ viktig: 1 
+
+ granulocyter: 1 
+
+ langa: 1 
+
+ forsvarsbarriraren: 1 
+
+ visar: 1 
+
+ enlig: 1 
+
+ teoblaster: 1 
+
+ andas: 1 
+
+ sv: 3 
+
+ inom: 6 
+
+ lagre: 1 
+
+ begransar: 1 
+
+ langeasciculata: 1 
+
+ di: 1 
+
+ lokaliserade: 1 
+
+ information: 1 
+
+ enhet: 1 
+
+ njurent: 1 
+
+ kroppsvatskorna: 2 
+
+ llen: 1 
+
+ inte: 4 
+
+ lokal: 1 
+
+ samt: 19 
+
+ skelettmuskulaturens: 1 
+
+ aortabagen: 1 
+
+ nnehall: 2 
+
+ generera: 1 
+
+ bor: 8 
+
+ hco: 4 
+
+ s: 5 
+
+ bildningen: 1 
+
+ 3o: 2 
+
+ tibia: 1 
+
+ iratorisk: 1 
+
+ dn: 1 
+
+ icke: 4 
+
+ fariesteroider: 1 
+
+ ge: 2 
+
+ os: 3 
+
+ ns: 1 
+
+ redovisas: 1 
+
+ innehall: 2 
+
+ calcaneofibulare: 1 
+
+ grupperna: 2 
+
+ 2014: 17 
+
+ aven: 7 
+
+ utvecklingen: 1 
+
+ centralt: 1 
+
+ pankredenohypofysviktigaste: 1 
+
+ ligger: 1 
+
+ storre: 2 
+
+ inkl: 1 
+
+ c8: 2 
+
+ tb: 1 
+
+ efferenta: 2 
+
+ framstallningar: 1 
+
+ flexion: 1 
+
+ nhur: 1 
+
+ rurebarken: 1 
+
+ tidsenhet: 1 
+
+ mhc: 2 
+
+ mella: 1 
+
+ mr: 1 
+
+ a: 33 
+
+ vi: 3 
+
+ kliniskt: 1 
+
+ livslangd: 3 
+
+ uteruskriktion: 1 
+
+ 1p: 2 
+
+ alia: 1 
+
+ nbegripa: 1 
+
+ deltar: 2 
+
+ pinocyterar: 1 
+
+ oplasma: 1 
+
+ dy: 1 
+
+ jobbar: 1 
+
+ narmast: 1 
+
+ och: 141 
+
+ sorter: 1 
+
+ manniska: 1 
+
+ en: 23 
+
+ lokala: 2 
+
+ beror: 1 
+
+ korrekt: 2 
+
+ gfr: 7 
+
+ blodkarlsvaggen: 1 
+
+ aspekter: 3 
+
+ rorande: 1 
+
+ bukvaggen: 1 
+
+ sprangben: 1 
+
+ kontrollen: 2 
+
+ vis: 1 
+
+ orsakade: 1 
+
+ gi: 1 
+
+ mediatorer: 1 
+
+ detalj: 2 
+
+ metoder: 1 
+
+ sapparaten: 1 
+
+ kpa: 10 
+
+ nar: 2 
+
+ malorgan: 1 
+
+ lus: 1 
+
+ huvudsak: 1 
+
+ mamman: 3 
+
+ tenderar: 1 
+
+ effektiv: 1 
+
+ endotelcellsmembran: 1 
+
+ omedelbart: 1 
+
+ mangden: 1 
+
+ cereb: 1 
+
+ angransande: 1 
+
+ karnor: 1 
+
+ slutposition: 1 
+
+ doc: 1 
+
+ schematiska: 1 
+
+ v: 4 
+
+ onstant: 1 
+
+ elimination: 2 
+
+ signaltransduktionsmolekyler: 1 
+
+ producerar: 2 
+
+ blodkarl: 1 
+
+ 40: 2 
+
+ inkast: 1 
+
+ hostreflex: 2 
+
+ vattenmolekyler: 1 
+
+ syran: 1 
+
+ huvudsakligen: 1 
+
+ angiotensin: 1 
+
+ sida: 16 
+
+ tid: 2 
+
+ tionen: 1 
+
+ kansel: 1 
+
+ anatomi: 1 
+
+ poventilation: 1 
+
+ organ: 1 
+
+ forsvarsmekanismer: 1 
+
+ sarkosomer: 1 
+
+ kanner: 1 
+
+ simma: 2 
+
+ degranulering: 1 
+
+ komponenter: 1 
+
+ troponin: 1 
+
+ hog: 1 
+
+ deltoideum: 1 
+
+ tums: 1 
+
+ kollega: 1 
+
+ skelettmuskelcirkulationen: 1 
+
+ supramed: 1 
+
+ medvetsloshet: 1 
+
+ oara: 1 
+
+ men: 7 
+
+ sjukskoterskor: 1 
+
+ analysera: 1 
+
+ lungfunktionen: 1 
+
+ alkalos: 2 
+
+ inga: 1 
+
+ eliminationsplatser: 1 
+
+ fibula: 1 
+
+ samspel: 2 
+
+ kasta: 1 
+
+ molekyler: 8 
+
+ of: 1 
+
+ perimysium: 1 
+
+ metatarsophalangeallederna: 1 
+
+ h2po4: 1 
+
+ nara: 2 
+
+ ti: 1 
+
+ oblongata: 1 
+
+ forstaelig: 1 
+
+ blodflodet: 3 
+
+ pleura: 1 
+
+ obstruktiv: 1 
+
+ sarskilja: 1 
+
+ hco3: 1 
+
+ vem: 1 
+
+ bollen: 3 
+
+ kunna: 10 
+
+ gar: 5 
+
+ koppla: 1 
+
+ baks: 1 
+
+ ovulationekteristiska: 1 
+
+ friska: 17 
+
+ samma: 16 
+
+ mekontraktionantidiureti: 1 
+
+ oteinet: 1 
+
+ form: 1 
+
+ art: 4 
+
+ viktigt: 1 
+
+ bandindelning: 1 
+
+ utsondras: 5 
+
+ anatomisk: 1 
+
+ valtranade: 1 
+
+ radi: 1 
+
+ mesenkymc: 1 
+
+ kvinnors: 1 
+
+ fasciculus: 1 
+
+ muskelgrupper: 2 
+
+ bredvid: 1 
+
+ diures: 1 
+
+ benets: 1 
+
+ kk: 1 
+
+ agen: 1 
+
+ formaksnatriuretisk: 1 
+
+ syreupptagningsformagaﬂ: 1 
+
+ syremangd: 1 
+
+ acidos: 17 
+
+ bestamni: 1 
+
+ ute: 1 
+
+ kansligheten: 1 
+
+ fald: 1 
+
+ 14: 1 
+
+ pc: 1 
+
+ 4p: 1 
+
+ topografiska: 1 
+
+ po: 3 
+
+ endokrvilka: 1 
+
+ vissa: 1 
+
+ efter: 5 
+
+ lika: 1 
+
+ aerar: 1 
+
+ sander: 1 
+
+ forbeningszon: 1 
+
+ hemi: 1 
+
+ humeri: 3 
+
+ proteiner: 2 
+
+ hittar: 1 
+
+ histidin: 1 
+
+ utovas: 1 
+
+ motsvaras: 2 
+
+ ungefarligt: 1 
+
+ liter: 1 
+
+ immunoglobulin: 1 
+
+ hypothalaen: 1 
+
+ trolig: 1 
+
+ karl: 1 
+
+ nysrefex: 2 
+
+ buffr: 1 
+
+ forkalkningszon: 1 
+
+ nedat: 1 
+
+ sa: 12 
+
+ kompendiet: 3 
+
+ loxytocin: 1 
+
+ ger: 8 
+
+ forskjutes: 1 
+
+ nsekretions: 1 
+
+ vatekarbonat: 4 
+
+ na: 10 
+
+ ytspanningen: 2 
+
+ framfor: 1 
+
+ hade: 1 
+
+ igenom: 1 
+
+ detekteras: 2 
+
+ proliferations: 1 
+
+ ytan: 3 
+
+ proth: 1 
+
+ nnehallande: 1 
+
+ utsondring: 4 
+
+ bombocytaggisattning: 1 
+
+ fagocyt: 1 
+
+ domen: 1 
+
+ samband: 1 
+
+ mit: 1 
+
+ balflexion: 1 
+
+ prolifandemal: 1 
+
+ ﬂhemocytoblasterﬂ: 1 
+
+ mycket: 2 
+
+ normalt: 7 
+
+ vad: 14 
+
+ innanng: 1 
+
+ yrsel: 1 
+
+ ds: 1 
+
+ ursprungssegment: 1 
+
+ torer: 1 
+
+ perifer: 2 
+
+ metabol: 6 
+
+ insett: 1 
+
+ transplantationsantigen: 1 
+
+ 45: 1 
+
+ anpassad: 1 
+
+ mmansattning: 1 
+
+ beskrivas: 2 
+
+ snabbt: 1 
+
+ filtratets: 1 
+
+ produktion: 1 
+
+ bronker: 1 
+
+ canaliculi: 1 
+
+ immunforsvaret: 3 
+
+ cellen: 3 
+
+ ulnarlederna: 1 
+
+ relationerna: 1 
+
+ dvs: 2 
+
+ medfodda: 3 
+
+ konsekvenserna: 1 
+
+ relationen: 3 
+
+ aterfar: 1 
+
+ kontraherar: 1 
+
+ andlage: 1 
+
+ jolkejektion: 1 
+
+ 59: 2 
+
+ bildas: 3 
+
+ hyalint: 1 
+
+ fr: 6 
+
+ formedlar: 1 
+
+ skelettmuskulatur: 1 
+
+ bros: 1 
+
+ submaximal: 1 
+
+ se: 2 
+
+ raddas: 1 
+
+ platshanvisningrinologi: 1 
+
+ spektive: 1 
+
+ hydrofob: 1 
+
+ arbetspuls: 1 
+
+ redovisa: 1 
+
+ upp: 3 
+
+ œ: 2 
+
+ medvetslos: 1 
+
+ larmsignal: 1 
+
+ lymfstationer: 1 
+
+ havsytan: 1 
+
+ framst: 3 
+
+ saga: 1 
+
+ dygn: 1 
+
+ traven: 1 
+
+ luftvagarnas: 1 
+
+ uktuella: 1 
+
+ gluk: 1 
+
+ storlek: 1 
+
+ ixsh: 1 
+
+ nashala: 1 
+
+ binjurema: 1 
+
+ glukosfaser: 1 
+
+ blivit: 1 
+
+ paverkar: 2 
+
+ visa: 1 
+
+ regleras: 1 
+
+ flyktiga: 2 
+
+ 4: 18 
+
+ inbyggda: 1 
+
+ bildar: 1 
+
+ mormoner: 1 
+
+ speciella: 2 
+
+ papper: 16 
+
+ ormonforand: 1 
+
+ lagring: 1 
+
+ bifogade: 1 
+
+ mindre: 1 
+
+ bestammande: 2 
+
+ produktionshastighet: 1 
+
+ nerv: 3 
+
+ kravs: 4 
+
+ met: 2 
+
+ initiala: 1 
+
+ utgor: 3 
+
+ entydig: 1 
+
+ rnder: 1 
+
+ relevant: 1 
+
+ urinen: 1 
+
+ manniskokroppen: 1 
+
+ proteininnehallet: 1 
+
+ bade: 3 
+
+ hh: 1 
+
+ oql: 1 
+
+ lig: 2 
+
+ alveolara: 1 
+
+ produk: 1 
+
+ 20: 2 
+
+ ull: 1 
+
+ forenliga: 1 
+
+ ad: 2 
+
+ orsak: 1 
+
+ skadestalle: 1 
+
+ ierar: 1 
+
+ gh: 1 
+
+ binj: 1 
+
+ nas: 1 
+
+ sjunker: 1 
+
+ principiella: 1 
+
+ mots: 1 
+
+ sparas: 1 
+
+ orontru: 1 
+
+ guyons: 1 
+
+ ledtyp: 1 
+
+ forelasningen: 1 
+
+ ufran: 1 
+
+ agerar: 1 
+
+ identifiera: 2 
+
+ stic: 1 
+
+ innervation: 2 
+
+ dominerfsh: 1 
+
+ noga: 1 
+
+ bilder: 1 
+
+ vatska: 1 
+
+ kompensation: 1 
+
+ ninnliga: 1 
+
+ hitta: 1 
+
+ o2: 1 
+
+ kraftig: 1 
+
+ septum: 1 
+
+ rs: 1 
+
+ albumin: 3 
+
+ be: 10 
+
+ cerebrala: 1 
+
+ tanker: 1 
+
+ vavnaderna: 1 
+
+ fig: 2 
+
+ djupt: 1 
+
+ reagerar: 1 
+
+ medianus: 1 
+
+ immunsystemets: 1 
+
+ trachea: 1 
+
+ dispositionen: 1 
+
+ noll: 1 
+
+ ondometriet: 1 
+
+ tr: 1 
+
+ humerus: 1 
+
+ kastar: 2 
+
+ inflammatoris: 1 
+
+ stimulensfaktor: 1 
+
+ karlforsorjning: 2 
+
+ hart: 1 
+
+ cellens: 2 
+
+ likasa: 1 
+
+ adhesionsmolekyler: 3 
+
+ navicularis: 1 
+
+ haller: 1 
+
+ hand: 2 
+
+ endotelceller: 2 
+
+ avseende: 3 
+
+ peptid: 1 
+
+ vandometriet: 1 
+
+ kastat: 1 
+
+ hagrar: 1 
+
+ larynx: 1 
+
+ gora: 2 
+
+ andrar: 1 
+
+ kolsyra: 2 
+
+ flesta: 1 
+
+ intervertebrale: 1 
+
+ roll: 1 
+
+ cartilage: 1 
+
+ faster: 1 
+
+ tunt: 1 
+
+ tt: 2 
+
+ dedogor: 1 
+
+ stabilisering: 1 
+
+ okondrier: 1 
+
+ sidokedjan: 1 
+
+ fascikel: 2 
+
+ signaleringsfrekvens: 1 
+
+ uta: 1 
+
+ avdelning: 1 
+
+ so: 2 
+
+ noang: 1 
+
+ rtisol: 1 
+
+ betydelsen: 2 
+
+ kansla: 1 
+
+ komma: 1 
+
+ malceller: 1 
+
+ ivrigt: 1 
+
+ buffrande: 4 
+
+ 7: 14 
+
+ uppkommer: 1 
+
+ termusculare: 1 
+
+ grad: 1 
+
+ ribosomer: 1 
+
+ blodplasma: 1 
+
+ darmed: 2 
+
+ huvudmetoder: 1 
+
+ lh: 1 
+
+ transport: 1 
+
+ blir: 2 
+
+ baserad: 1 
+
+ aktuella: 16 
+
+ syrgas: 2 
+
+ hjarnan: 2 
+
+ handleden: 1 
+
+ vasokonst: 1 
+
+ plexus: 1 
+
+ respiration: 1 
+
+ filtrationsbarriarens: 1 
+
+ kemoreceptor: 1 
+
+ fler: 2 
+
+ delfragorna: 1 
+
+ ph: 18 
+
+ sankt: 1 
+
+ lokalisation: 2 
+
+ atorer: 1 
+
+ tropomyosin: 1 
+
+ analys: 1 
+
+ paverkande: 1 
+
+ inklusive: 2 
+
+ menscykelns: 1 
+
+ scapula: 1 
+
+ kommunicerar: 1 
+
+ regleringen: 2 
+
+ cellooch: 1 
+
+ blodets: 12 
+
+ snabbaste: 1 
+
+ lokaliserad: 1 
+
+ tubuli: 1 
+
+ stabiliserar: 1 
+
+ kvave: 1 
+
+ landets: 1 
+
+ uppta: 1 
+
+ d: 3 
+
+ oversta: 1 
+
+ afferenta: 2 
+
+ attraherar: 1 
+
+ gangsystemet: 1 
+
+ sprider: 1 
+
+ iva: 1 
+
+ ngt: 1 
+
+ ammoniumjon: 2 
+
+ 10: 4 
+
+ boll: 2 
+
+ ett: 10 
+
+ rynxbrosk: 1 
+
+ ta: 4 
+
+ kallas: 8 
+
+ hanvisningar: 16 
+
+ andningsregleringen: 1 
+
+ stologiska: 1 
+
+ brostkorgen: 2 
+
+ jursvikt: 1 
+
+ solfjaderformat: 1 
+
+ skillnader: 3 
+
+ stuka: 1 
+
+ konstitutiva: 2 
+
+ ogonenﬂ: 1 
+
+ genomblodning: 1 
+
+ upphov: 2 
+
+ forsvar: 2 
+
+ oang: 1 
+
+ start: 1 
+
+ u2: 1 
+
+ utandningsgaser: 1 
+
+ tnf: 2 
+
+ intakta: 1 
+
+ passagen: 2 
+
+ ormaga: 1 
+
+ innata: 1 
+
+ 50: 2 
+
+ finns: 4 
+
+ strax: 1 
+
+ nervi: 1 
+
+ anp: 1 
+
+ vattenmolekylerna: 1 
+
+ nducerar: 1 
+
+ plasmapr: 1 
+
+ orsaken: 2 
+
+ stallen: 1 
+
+ apillara: 1 
+
+ angivna: 1 
+
+ raka: 1 
+
+ fingrarnas: 1 
+
+ hantering: 1 
+
+ strukturen: 1 
+
+ verksam: 1 
+
+ p: 22 
+
+ ver: 1 
+
+ foramen: 1 
+
+ ae: 1 
+
+ annat: 1 
+
+ ringarna: 1 
+
+ vessin: 1 
+
+ hypertrofi: 1 
+
+ tioner: 1 
+
+ 5: 18 
+
+ belagen: 1 
+
+ 2r: 1 
+
+ skapula: 1 
+
+ valjer: 2 
+
+ kunskap: 1 
+
+ ovriga: 1 
+
+ sh: 1 
+
+ antigenspecifika: 2 
+
+ immunsystemet: 9 
+
+ funktionerna: 1 
+
+ o: 2 
+
+ buffring: 1 
+
+ glossopharynge: 1 
+
+ forenligt: 2 
+
+ kemoreceptorers: 2 
+
+ teckna: 1 
+
+ prot: 3 
+
+ 55: 2 
+
+ proteinstrukturen: 1 
+
+ senare: 1 
+
+ bildgator: 1 
+
+ norma: 1 
+
+ surare: 1 
+
+ vatten: 1 
+
+ hjartats: 1 
+
+ nagra: 1 
+
+ larandemal: 16 
+
+ forekomsten: 1 
+
+ karlbaddar: 1 
+
+ attenermea: 1 
+
+ epitelceller: 1 
+
+ disposition: 1 
+
+ alveol: 1 
+
+ beroende: 3 
+
+ kraftfullt: 1 
+
+ ansamlas: 3 
+
+ fotterna: 1 
+
+ barnen: 3 
+
+ markerad: 2 
+
+ lager: 1 
+
+ horande: 1 
+
+ glomerular: 1 
+
+ momentan: 1 
+
+ bandemal: 1 
+
+ muskelfib: 1 
+
+ ige: 1 
+
+ forhallandena: 1 
+
+ horselgang: 1 
+
+ aorticum: 1 
+
+ araventricu: 1 
+
+ glomus: 2 
+
+ sarskild: 1 
+
+ kunde: 1 
+
+ ann: 1 
+
+ ej: 25 
+
+ 3: 33 
+
+ or: 1 
+
+ geno: 1 
+
+ resp: 9 
+
+ karakteristika: 2 
+
+ hallas: 1 
+
+ minskad: 4 
+
+ mpeten: 1 
+
+ anslutning: 1 
+
+ samgregation: 1 
+
+ flo: 1 
+
+ hypoglykeagon: 1 
+
+ felkallor: 1 
+
+ mappnr: 17 
+
+ alingsroren: 1 
+
+ vilka: 9 
+
+ homeostasen: 1 
+
+ cellerna: 1 
+
+ sin: 1 
+
+ follikelfas: 1 
+
+ claraceller: 1 
+
+ ex: 2 
+
+ speciellt: 2 
+
+ bronkial: 1 
+
+ relativa: 1 
+
+ ade: 1 
+
+ tgf: 1 
+
+ acidoser: 1 
+
+ ﬂmaximal: 1 
+
+ zone: 1 
+
+ skelettmuskelcellernas: 1 
+
+ potentilh: 1 
+
+ utsondringen: 4 
+
+ tog: 1 
+
+ inkluderande: 2 
+
+ artarblodet: 1 
+
+ fosfatbuffert: 1 
+
+ muskulaturens: 1 
+
+ ﬂnormallageﬂ: 1 
+
+ axlar: 1 
+
+ undvika: 1 
+
+ buffertar: 8 
+
+ dar: 6 
+
+ hogre: 1 
+
+ kan: 18 
+
+ anniskan: 1 
+
+ bild: 2 
+
+ vid: 18 
+
+ progen: 1 
+
+ re: 5 
+
+ fettsyror: 1 
+
+ syrabas: 4 
+
+ direkt: 3 
+
+ rangordning: 1 
+
+ kanske: 1 
+
+ kemiska: 1 
+
+ sannolika: 1 
+
+ kolloidsosmotiskt: 1 
+
+ dess: 5 
+
+ hoftflexorer: 1 
+
+ svullnad: 1 
+
+ 44: 17 
+
+ h: 14 
+
+ sammansattning: 3 
+
+ laget: 1 
+
+ axillaris: 1 
+
+ tillfora: 1 
+
+ 35: 1 
+
+ duktion: 1 
+
+ undre: 1 
+
+ annan: 1 
+
+ halles: 1 
+
+ saor: 1 
+
+ stabilisera: 1 
+
+ pil: 1 
+
+ 100: 1 
+
+ recep: 1 
+
+ ar: 42 
+
+ iblandade: 1 
+
+ bas: 2 
+
+ styr: 2 
+
+ karotiskroppar: 1 
+
+ exempel: 2 
+
+ handen: 2 
+
+ gn: 1 
+
+ kulle: 1 
+
+ effframst: 1 
+
+ klassificering: 1 
+
+ desmal: 1 
+
+ regleringonscykelns: 1 
+
+ skillnaderna: 1 
+
+ losliga: 3 
+
+ inflammatoriska: 1 
+
+ an: 7 
+
+ kropparna: 1 
+
+ vand: 1 
+
+ 11: 1 
+
+ kastperspektiv: 1 
+
+ perspektiv: 1 
+
+ weigert: 1 
+
+ carp: 1 
+
+ forkalknin: 1 
+
+ indirekt: 5 
+
+ faktorer: 7 
+
+ llstand: 1 
+
+ erythrocyti: 1 
+
+ alfa: 2 
+
+ vavnad: 3 
+
+ jamfor: 1 
+
+ faktor: 2 
+
+ zona: 1 
+
+ pco2: 5 
+
+ hotande: 1 
+
+ lode: 1 
+
+ kronisk: 1 
+
+ illustrerade: 1 
+
+ aklig: 1 
+
+ enligt: 1 
+
+ tar: 2 
+
+ skelettdelar: 3 
+
+ betydelse: 3 
+
+ halla: 1 
+
+ 15: 1 
+
+ inrar: 1 
+
+ skulle: 1 
+
+ denna: 8 
+
+ troskel: 1 
+
+ svavelsyra: 1 
+
+ tran: 1 
+
+ m: 7 
+
+ medulla: 1 
+
+ lagt: 2 
+
+ optimalt: 1 
+
+ fran: 8 
+
+ andningscentrums: 2 
+
+ articulatio: 2 
+
+ 16: 2 
+
+ idra: 1 
+
+ per: 4 
+
+ amen: 1 
+
+ central: 2 
+
+ oar: 1 
+
+ frihet: 1 
+
+ morfolog: 1 
+
+ 1: 21 
+
+ hi: 1 
+
+ specialiserade: 1 
+
+ sulcus: 1 
+
+ spad: 1 
+
+ tentamen: 32 
+
+ inandad: 1 
+
+ e: 3 
+
+ receptor: 1 
+
+ man: 6 
+
+ hormormon: 1 
+
+ par: 1 
+
+ 9: 4 
+
+ kanna: 1 
+
+ si: 1 
+
+ blod: 7 
+
+ ner: 1 
+
+ huvudfunk: 1 
+
+ fibroblaster: 1 
+
+ fragetecken: 1 
+
+ gransen: 2 
+
+ haser: 1 
+
+ und: 1 
+
+ typ: 3 
+
+ andningen: 4 
+
+ flyktig: 6 
+
+ immunglobuliner: 1 
+
+ uppskattas: 1 
+
+ frag: 1 
+
+ klam: 1 
+
+ antigen: 1 
+
+ delarna: 1 
+
+ mang: 1 
+
+ sankning: 1 
+
+ vavnader: 1 
+
+ val: 1 
+
+ lungans: 1 
+
+ svar: 40 
+
+ venost: 1 
+
+ sekundara: 2 
+
+ skuldran: 2 
+
+ handlar: 1 
+
+ 6: 3 
+
+ respektive: 6 
+
+ retraktion: 1 
+
+ integreramenstruatioorandras: 1 
+
+ syba: 1 
+
+ maximal: 4 
+
+ maxpuls: 1 
+
+ ledtyper: 2 
+
+ olaris: 1 
+
+ beskriv: 9 
+
+ antikroppar: 2 
+
+ kommer: 2 
+
+ oxytocin: 1 
+
+ formoda: 1 
+
+ sxytocin: 1 
+
+ alveolarsack: 1 
+
+ finnehover: 1 
+
+ forsoker: 1 
+
+ minskar: 2 
+
+ nervsignaler: 1 
+
+ utsondra: 1 
+
+ syntesen: 1 
+
+ ostrogen: 1 
+
+ kroppvarsaspekt: 1 
+
+ hander: 1 
+
+ nyckelben: 1 
+
+ mellan: 8 
+
+ vita: 1 
+
+ ibildning: 1 
+
+ dominerande: 2 
+
+ storst: 1 
+
+ alveolar: 1 
+
+ ingar: 2 
+
+ markerat: 1 
+
+ immunoglobuliner: 1 
+
+ ytspanningsnedsattande: 2 
+
+ syrgasutnyttjande: 1 
+
+ caroticus: 1 
+
+ regionala: 1 
+
+ viktiga: 2 
+
+ ytstrukturer: 1 
+
+ syror: 6 
+
+ nh: 1 
+
+ kand: 1 
+
+ t: 6 
+
+ musculocutaneus: 1 
+
+ vilo: 1 
+
+ rﬂ: 1 
+
+ plasmaprotein: 1 
+
+ serumproteashamma: 1 
+
+ uppbyggnaden: 2 
+
+ avsaknad: 1 
+
+ buffer: 1 
+
+ ovre: 1 
+
+ over: 1 
+
+ ungefar: 1 
+
+ c: 6 
+
+ ossifikationscentra: 1 
+
+ estamning: 1 
+
+ hon: 2 
+
+ lunga: 1 
+
+ filtration: 2 
+
+ hierarki: 1 
+
+ nervus: 1 
+
+ ytterorat: 1 
+
+ skiljer: 1 
+
+ mrater: 1 
+
+ nervtradarna: 1 
+
+ patogen: 2 
+
+ lungor: 1 
+
+ forloss: 1 
+
+ nucleus: 1 
+
+ bildning: 2 
+
+ bra: 2 
+
+ samman: 1 
+
+ narmare: 1 
+
+ 60: 1 
+
+ 2: 55 
+
+ genombodning: 1 
+
+ proteine: 1 
+
+ botten: 1 
+
+ okar: 3 
+
+ namn: 5 
+
+ reglering: 5 
+
+ konfigurera: 1 
+
+ laraedogora: 3 
+
+ relation: 2 
+
+ mot: 2 
+
+ ledband: 1 
+
+ plasmamembran: 1 
+
+ hogst: 1 
+
+ 04t: 1 
+
+ manga: 1 
+
+ eorin: 1 
+
+ menas: 1 
+
+ amus: 1 
+
+ blodkapillarer: 1 
+
+ vavnadsvikt: 1 
+
+ extension: 1 
+
+ liga: 1 
+
+ manniskan: 17 
+
+ syrgastransporterande: 1 
+
+ aktin: 1 
+
+ opolara: 1 
+
+ receptorer: 7 
+
+ ska: 6 
+
+ armbagen: 2 
+
+ endomysium: 1 
+
+ reaktivt: 1 
+
+ andra: 19 
+
+ lt: 1 
+
+ oshomeostase: 1 
+
+ innehallande: 1 
+
+ ktuella: 1 
+
+ kraft: 1 
+
+ stning: 1 
+
+ cellernas: 2 
+
+ hyperventilera: 1 
+
+ haptoglobin: 1 
+
+ njurar: 1 
+
+ bada: 1 
+
+ moleky: 1 
+
+ foregaende: 1 
+
+ tryck: 1 
+
+ matresultat: 2 
+
+ kroppsvatskor: 1 
+
+ budbarare: 1 
+
+ mt: 1 
+
+ hjalp: 3 
+
+ fargats: 1 
+
+ transferrin: 1 
+
+ hur: 13 
+
+ tillvaxtp: 1 
+
+ hojd: 1 
+
+ forskjuts: 1 
+
+ varfor: 1 
+
+ beskriva: 4 
+
+ arna: 1 
+
+ fasen: 1 
+
+ genit: 1 
+
+ tradbrosk: 1 
+
+ roterat: 1 
+
+ broskpreformerad: 1 
+
+ mediale: 1 
+
+ plus: 1 
+
+ syrebrist: 2 
+
+ nde: 1 
+
+ star: 4 
+
+ anvander: 1 
+
+ da: 3 
+
+ lokalt: 2 
+
+ uationscykeln: 1 
+
+ motsvarande: 1 
+
+ besvara: 1 
+
+ underarm: 1 
+
+ under: 6 
+
+ hansyn: 1 
+
+ halten: 1 
+
+ utmaning: 1 
+
+ axelled: 1 
+
+ nna: 1 
+
+ ungdomar: 1 
+
+ plasma: 2 
+
+ mapoang: 1 
+
+ godkant: 16 
+
+ variationer: 1 
+
+ osteoprogenitorcell: 1 
+
+ n: 7 
+
+ skulderleder: 1 
+
+ signaltransduktionsmol: 1 
+
+ presentera: 1 
+
+ skada: 1 
+
+ lymfocyter: 1 
+
+ lite: 3 
+
+ autoregleringens: 1 
+
+ svaret: 8 
+
+ tentamaxpo: 1 
+
+ membranets: 1 
+
+ bindvavens: 1 
+
+ del: 3 
+
+ ryggraden: 1 
+
+ ekyler: 3 
+
+ spar: 1 
+
+ forekommer: 2 
+
+ blodkropparna: 1 
+
+ vatskeytan: 1 
+
+ intr: 1 
+
+ andrad: 1 
+
+ behover: 17 
+
+ vavnaden: 1 
+
+ rkerade: 1 
+
+ kemokiner: 2 
+
+ myogen: 1 
+
+ cirkulation: 1 
+
+ langt: 1 
+
+ c7: 1 
+
+ rectus: 1 
+
+ lokalkemiska: 1 
+
+ lange: 1 
+
+ akrehoun: 1 
+
+ varvid: 1 
+
+ ha: 4 
+
+ armbagsle: 1 
+
+ syrorna: 1 
+
+ gap: 1 
+
+ filtrationshastighet: 1 
+
+ lten: 1 
+
+ hjartminutvolym: 1 
+
+ h2o: 1 
+
+ fingrarna: 1 
+
+ lungsjukdom: 1 
+
+ talofibulare: 1 
+
+ permeabiliteten: 1 
+
+ betrakta: 1 
+
+ yttre: 1 
+
+ sarkolemma: 1 
+
+ orandringarn: 1 
+
+ ce: 1 
+
+ akvatiska: 1 
+
+ amkalla: 1 
+
+ medan: 1 
+
+ dutema: 1 
+
+ fo: 2 
+
+ myofibrillen: 1 
+
+ transportor: 1 
+
+ stalle: 1 
+
+ relevanta: 2 
+
+ blev: 1 
+
+ urinorgan: 1 
+
+ njure: 1 
+
+ maste: 1 
+
+ koagulation: 1 
+
+ dock: 1 
+
+ ngar: 1 
+
+ muskulatur: 1 
+
+ 25: 20 
+
+ kompe: 1 
+
+ uppbyggnad: 2 
+
+ kroppen: 7 
+
+ kvantitat: 1 
+
+ njuren: 4 
+
+ minut: 2 
+
+ celler: 10 
+
+ 8: 3 
+
+ caroticum: 1 
+
+ eleverat: 1 
+
+ ledgangar: 3 
+
+ tranga: 1 
+
+ klargora: 4 
+
+ aortakropparna: 1 
+
+ kranglig: 1 
+
+ ca: 1 
+
+ usion: 1 
+
+ medialsidan: 2 
+
+ viss: 1 
+
+ excess: 2 
+
+ inferior: 1 
+
+ normalvardet: 1 
+
+ lle: 1 
+
+ hjarnstammen: 3 
+
+ far: 4 
+
+ detta: 10 
+
+ uppat: 1 
+
+ belastning: 1 
+
+ ansvara: 1 
+
+ syreupptagning: 1 
+
+ grundled: 1 
+
+ summan: 1 
+
+ hormo: 1 
+
+ lutealfa: 1 
+
+ behovs: 1 
+
+ forklarar: 1 
+
+ avviker: 1 
+
+ van: 1 
+
+ medi: 1 
+
+ vnad: 1 
+
+ tex: 1 
+
+ cellorganeller: 1 
+
+ makrofager: 2 
+
+ vattnet: 1 
+
+ stor: 1 
+
+ beskriver: 1 
+
+ 3p: 4 
+
+ arteriellt: 5 
+
+ biologiska: 1 
+
+ overst: 1 
+
+ amma: 1 
+
+ lufthunger: 2 
+
+ f: 8 
+
+ fouationsfas: 1 
+
+ ligament: 1 
+
+ bb: 4 
+
+ alla: 2 
+
+ konsekvensen: 1 
+
+ mata: 1 
+
+ syraﬂ: 2 
+
+ omnamna: 1 
+
+ blodvarde: 1 
+
+ kontroll: 2 
+
+ underlag: 1 
+
+ artarblodets: 1 
+
+ fder: 1 
+
+ forsok: 1 
+
+ eventu: 1 
+
+ grund: 1 
+
+ grupp: 1 
+
+ plasmaflodet: 1 
+
+ perifera: 3 
+
+ bela: 1 
+
+ po2: 1 
+
+ ulnaris: 4 
+
+ 2p: 6 
+
+ sid: 1 
+
+ ndiet: 1 
+
+ av: 95 
+
+ stilla: 1 
+
+ sm: 1 
+
+ okning: 1 
+
+ volym: 1 
+
+ samver: 1 
+
+ ko: 2 
+
+ insida: 1 
+
+ amnen: 3 
+
+ vilken: 8 
+
+ s2: 20 
+
+ blodkarlen: 1 
+
+ zonen: 1 
+
+ ho: 2 
+
+ hjarncirkulationen: 1 
+
+ ka: 3 
+
+ matr: 1 
+
+ handelser: 1 
+
+ rktuella: 1 
+
+ starten: 2 
+
+ ju: 2 
+
+ abdominis: 1 
+
+ ganska: 1 
+
+ lungorna: 1 
+
+ exv: 1 
+
+ termer: 2 
+
+ reformerad: 1 
+
+ konstant: 2 
+
+ langs: 1 
+
+ ange: 5 
+
+ brosk: 3 
+
+ normala: 1 
+
+ glomerulusfiltrationen: 1 
+
+ 5p: 1 
+
+ med: 42 
+
+ nick: 1 
+
+ fotbollsmamma: 1 
+
+ nervroten: 1 
+
+ mc: 1 
+
+ som: 53 
+
+ sk: 1 
+
+ adaptiva: 2 
+
+ ﬂflyktiga: 1 
+
+ mekanismen: 2 
+
+ sinus: 1 
+
+ mmhg: 1 
+
+ brukar: 1 
+
+ erns: 1 
+
+ vasopreucleus: 1 
+
+ forandri: 1 
+
+ namns: 1 
+
+ paverka: 4 
+
+ rorelsekonfiguration: 1 
+
+ losa: 1 
+
+ passerar: 2 
+
+ esteron: 1 
+
+ s1: 2 
+
+ 17: 18 
+
+ hemodynamik: 1 
+
+ cyt: 1 
+
+ ecv: 1 
+
+ submaximala: 1 
+
+ ﬂficko: 1 
+
+ va: 3 
+
+ respiratorisk: 4 
+
+ avs: 1 
+
+ armens: 2 
+
+ kotorna: 1 
+
+ sedan: 4 
+
+ fpen: 1 
+
+ utfors: 1 
+
+ mediala: 1 
+
+ pappmen: 1 
+
+ omradet: 2 
+
+ eventuellt: 1 
+
+ komp: 4 
+
+ ditt: 17 
+
+ epimys: 1 
+
+ ﬂicke: 2 
+
+ kortfattat: 3 
+
+ forandringen: 1 
+
+ dessa: 10 
+
+ r: 5 
+
+ pco: 15 
+
+ rimlig: 1 
+
+ levern: 2 
+
+ kapillari: 1 
+
+ ndritiska: 1 
+
+ begreppet: 3 
+
+ forklaras: 2 
+
+ filtrationsbar: 1 
+
+ mska: 1 
+
+ koagulationffekter: 1 
+
+ presentation: 1 
+
+ fas: 2 
+
+ fragor: 17 
+
+ uppstar: 2 
+
+ gor: 18 
+
+ svarsaspekt: 18 
+
+ dire: 1 
+
+ roda: 1 
+
+ avsee: 1 
+
+ esultat: 1 
+
+ kt: 1 
+
+ den: 47 
+
+ transportsystemet: 1 
+
+ foljande: 5 
+
+ organelltyper: 1 
+
+ ak: 2 
+
+ normalvarden: 1 
+
+ sarkomeren: 1 
+
+ typer: 3 
+
+ plats: 17 
+
+ eller: 8 
+
+ ller: 1 
+
+ osedvanligt: 1 
+
+ myofilament: 1 
+
+ prestationsformaga: 1 
+
+ rorelseaxlar: 3 
+
+ co: 4 
+
+ hos: 3 
+
+ nefronets: 1 
+
+ hans: 1 
+
+ mer: 19 
+
+ kapacitet: 1 
+
+ oavsett: 1 
+
+ band: 1 
+
+ mitokondriede: 1 
+
+ fa: 2 
+
+ nerver: 1 
+
+ viktigast: 1 
+
+ enorm: 1 
+
+ syreupptag: 1 
+
+ sarkoplasma: 1 
+
+ plasmaproteinerna: 1 
+
+ stabilisatorer: 1 
+
+ calcified: 1 
+
+ ande: 2 
+
+ bindas: 1 
+
+ innehalla: 1 
+
+ viktigaste: 3 
+
+ s2vilka: 1 
+
+ uandemal: 1 
+
+ pa: 73 
+
+ ferations: 1 
+
+ plasmaceller: 1 
+
+ mineralisering: 1 
+
+ forutsattningar: 1 
+
+ benmargs: 1 
+
+ diskuterar: 1 
+
+ proffskontrakt: 1 
+
+ nsitet: 1 
+
+ baksidan: 16 
+
+ ammonium: 1 
+
+ lattan: 1 
+
+ macula: 1 
+
+ armar: 2 
+
+ sta: 1 
+
+ liggande: 1 
+
+ fettceller: 1 
+
+ fraga: 1 
+
+ fagocytera: 1 
+
+ definiera: 1 
+
+ muskelgrupp: 1 
+
+ belysa: 1 
+
+ glomeru: 1 
+
+ maximala: 1 
+
+ orgreningar: 1 
+
+ mikroskopiskt: 1 
+
+ ld: 1 
+
+ mangd: 1 
+
+ huvudet: 2 
+
+ redogor: 4 
+
+ honom: 1 
+
+ ant: 1 
+
+ forekomst: 1 
+
+ bilirubin: 1 
+
+ osteoid: 1 
+
+ sing: 2 
+
+ kna: 1 
+
+ i: 115 
+
+ gen: 1 
+
+ protoner: 1 
+
+ framgar: 1 
+
+ funktionella: 3 
+
+ calcaneus: 2 
+
+ fore: 2 
+
+ skikt: 1 
+
+ via: 6 
+
+ act: 1 
+
+ vatekarbonatsystemet: 1 
+
+ radilais: 1 
+
+ lleder: 1 
+
+ fsh: 1 
+
+ immunologiska: 1 
+
+ aopticus: 1 
+
+ sovakvi: 1 
+
+ buffringen: 1 
+
+ forvarvade: 1 
+
+ g: 4 
+
+ myosin: 1 
+
+ marghalor: 1 
+
+ varsaspekt: 2 
+
+ aldost: 1 
+
+ ser: 1 
+
+ autoreglering: 4 
+
+ nodvandig: 1 
+
+ as: 1 
+
+ stimulering: 1 
+
+ nal: 1 
+
+ systemet: 2 
+
+ mol: 2 
+
+ anges: 1 
+
+ ﬂsvartnar: 1 
+
+ ium: 1 
+
+ buffertjamvikter: 1 
+
+ il: 5 
+
+ divatefosfat: 1 
+
+ ovan: 2 
+
+ jamvikten: 1 
+
+ sen: 1 
+
+ klart: 2 
+
+ mikroskopis: 1 
+
+ nybildningen: 1 
+
+ 2o: 2 
+
+ aktiva: 1 
+
+ mitokondrier: 1 
+
+ reglerande: 2 
+
+ o0: 1 
+
+ spetsen: 2 
+
+ ens: 1 
+
+ livnar: 1 
+
+ langre: 4 
+
+ in: 1 
+
+ forsta: 4 
+
+ syreupptagningsformaga: 1 
+
+ poang: 36 
+
+ sn: 1 
+
+ ocksa: 11 
+
+ startar: 1 
+
+ avvikelse: 1 
+
+ njurblodf: 1 
+
+ foljd: 1 
+
+ inhibinforandringa: 1 
+
+ k: 6 
+
+ molekylen: 1 
+
+ mastceller: 1 
+
+ 66: 17 
+
+ renala: 1 
+
+ varandra: 2 
+
+ liksom: 3 
+
+ riaren: 1 
+
+ trang: 1 
+
+ malleolus: 1 
+
+ esserad: 1 
+
+ varit: 1 
+
+ barriar: 1 
+
+ sversus: 1 
+
+ kapillarer: 1 
+
+ h3o: 1 
+
+ stanna: 1 
+
+ adrenalin: 1 
+
+ struktur: 2 
+
+ respirationsorganens: 1 
+
+ pparaten: 1 
+
+ epitelbarriarer: 1 
+
+ utifran: 3 
+
+ klargors: 1 
+
+ s3: 3 
+
+ godkants: 1 
+
+ cellk: 1 
+
+ involverade: 2 
+
+ minst: 1 
+
+ alveolernas: 1 
+
+ elastiskt: 3 
+
+ utgors: 1 
+
+ rorelsen: 2 
+
+ epifysplattan: 1 
+
+ slederna: 1 
+
+ andel: 2 
+
+ h2co3: 2 
+
+ inflytande: 2 
+
+ protein: 2 
+
+ totalhalten: 1 
+
+ undervattenssimning: 1 
+
+ ligg: 1 
+
+ andras: 4 
+
+ normal: 1 
+
+ proteinbuffert: 1 
+
+ utbildningsseminarium: 1 
+
+ utseende: 1 
+
+ uppkomst: 1 
+
+ hydrofoba: 1 
+
+ bestamning: 3 
+
+ perf: 1 
+
+ avsakn: 1 
+
+ kontakt: 1 
+
+ nervforbindelser: 1 
+
+ 10hypofysen: 1 
+
+ utsondrar: 1 
+
+ minerar: 1 
+
+ armhala: 1 
+
+ amgar: 1 
+
+ intag: 1 
+
+ aterupplivningsatgarder: 1 
+
+ bilden: 1 
+
+ epimysium: 1 
+
+ luftvagstradets: 1 
+
+ landning: 1 
+
+ status: 4 
+
+ reprod: 1 
+
+ farlig: 1 
+
+ bidr: 1 
+
+ atminstone: 1 
+
+ menstrupoang: 1 
+
+ ratt: 4 
+
+ surfactants: 1 
+
+ renin: 1 
+
+ interalveolarsep: 1 
+
+ glenohumerale: 2 
+
+ precision: 1 
+
+ borjar: 1 
+
+ sering: 1 
+
+ topp: 1 
+
+ muskler: 3 
+
+ alveolok: 1 
+
+ vara: 3 
+
+ ungefarliga: 1 
+
+ funktion: 5 
+
+ fordel: 1 
+
+ lusfiltrationen: 1 
+
+ din: 5 
+
+ ut: 2 
+
+ mn: 1 
+
+ rbilitet: 1 
+
+ avvagd: 1 
+
+ ioxid: 1 
+
+ redo: 1 
+
+ vanligaste: 3 
+
+ 19: 3 
+
+ forandringar: 5 
+
+ hydrofil: 1 
+
+ benbildning: 2 
+
+ neurohoch: 1 
+
+ namna: 1 
+
+ monster: 2 
+
+ fl: 1 
+
+ ventilationen: 1 
+
+ hyperventilation: 4 
+
+ ga: 1 
+
+ tation: 1 
+
+ kap: 1 
+
+ njurens: 1 
+
+ forelasning: 1 
+
+ kningar: 1 
+
+ medvetandet: 1 
+
+ satt: 1 
+
+ ror: 1 
+
+ sma: 1 
+
+ bilderna: 1 
+
+ kol: 1 
+
+ skall: 7 
+
+ vagus: 1 
+
+ definition: 1 
+
+ larma: 1 
+
+ ma: 1 
+
+ forandringarna: 1 
+
+ muskulaturenover: 1 
+
+ malleolen: 1 
+
+ innan: 1 
+
+ flexor: 2 
+
+ talocruralis: 1 
+
+ 13: 1 
+
+ antagen: 1 
+
+ maximalt: 1 
+
+ mjolksyra: 1 
+
+ vetvis: 1 
+
+ identisk: 1 
+
+ nullt: 1 
+
+ forstadier: 1 
+
+ vill: 1 
+
+ orsakas: 1 
+
+ densa: 1 
+
+ medialis: 2 
+
+ ifn: 2 
+
+ de: 34 
+
+ bindvavsstruktur: 1 
+
+ vanligen: 1 
+
+ histologiska: 1 
+
+ transporten: 1 
+
+ justera: 1 
+
+ behov: 1 
+
+ jvasopressin: 1 
+
+ enklast: 1 
+
+ isar: 1 
+
+ full: 3 
+
+ aerhans: 1 
+
+ 0: 15 
+
+ fokusera: 1 
+
+ innehaller: 1 
+
+ eron: 1 
+
+ sformagan: 1 
+
+ alveolargang: 1 
+
+ omsattningen: 2 
+
+ tentame: 1 
+
+ osmotisk: 1 
+
+ totala: 1 
+
+ innebord: 1 
+
+ teorin: 1 
+
+ effekt: 4 
+
+ filtrationsbarriar: 1 
+
+ ression: 1 
+
+ ng: 1 
+
+ han: 1 
+
+ associerade: 2 
+
+ brachialis: 1 
+
+ albuminets: 1 
+
+ att: 45 
+
+ ellt: 1 
+
+ jamviktslagena: 1 
+
+ arbetsbelastning: 1 
+
+ kold: 1 
+
+ om: 28 
+
+ urin: 4 
+
+ bakom: 2 
+
+ eende: 1 
+
+ konsekvenser: 2 
+
+ tva: 7 
+
+ arbetande: 1 
+
+ fosforsyra: 1 
+
+ jfr: 3 
+
+ nagon: 3 
+
+ mekanismer: 7 
+
+ kast: 1 
+
+ renal: 1 
+
+ blodkroppar: 2 
+
+ ormekanismer: 1 
+
+ daremellan: 1 
+
+ timme: 1 
+
+ rorligheten: 2 
+
+ utsondrade: 1 
+
+ metabolismen: 1 
+
+ rbf: 2 
+
+ mmol: 1 
+
+ proinflammatoriska: 1 
+
+ kroppens: 1 
+
+ har: 10 
+
+ bildsidan: 1 
+
+ bl: 2 
+
+ lillfingersidan: 1 
+
+ microbicida: 2 
+
+ gs: 3 
+
+ nervrot: 2 
+
+ koldioxid: 2 
+
+ vilket: 5 
+
+ hy: 1 
+
+ tester: 2 
+
+ anvands: 1 
+
+ anisotropt: 1 
+
+ desmotstandet: 1 
+
+ infektioner: 1 
+
+ ur: 2 
+
+ kritiska: 2 
+
+ hemoglobini: 1 
+
+ baser: 9 
+
+ olika: 9 
+
+ primara: 1 
+
+ urologiska: 1 
+
+ gaser: 1 
+
+ kliniker: 1 
+
+ sku: 1 
+
+ sammanlagda: 1 
+
+ ffull: 1 
+
+ du: 27 
+
+ h3: 1 
+
+ studenten: 1 
+
+ hoft: 1 
+
+ tema: 4 
+
+ menstr: 1 
+
+ idan: 1 
+
+ aning: 1 
+
+ etc: 1 
+
+ kanslig: 1 
+
+ skickat: 1 
+
+ truncus: 1 
+
+ kemoreceptorerns: 1 
+
+ okad: 3 
+
+ ledgang: 1 
+
+ elegant: 1 
+
+ bidrar: 3 
+
+ inatro: 1 
+
+ terminologi: 1 
+
+ ses: 1 
+
+ lakarkandidater: 1 
+
+ for: 122 
+
+ post: 1 
+
+ strukturerna: 1 
+
+ stimuli: 1 
+
+ ndroklaster: 1 
+
+ utom: 1 
+
+ ceruloplasmin: 1 
+
+ volymmassig: 1 
+
+ erytrocyters: 1 
+
+ undantag: 1 
+
+ ext: 1 
+
+ luft: 3 
+
+ syranﬂ: 1 
+
+ torde: 1 
+
+ 04: 16 
+
+ negativt: 1 
+
+ resistanskarlen: 1 
+
+ sker: 3 
+
+ autoregleringen: 1 
+
+ arteriella: 1 
+
+ karltonus: 1 

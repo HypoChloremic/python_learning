@@ -1,0 +1,7 @@
+import numpy as np
+from vispy import app
+from vispy import gloo
+
+def main():
+    c = app.Canvas(keys="interactive")
+    
