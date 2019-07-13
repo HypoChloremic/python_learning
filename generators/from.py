@@ -11,10 +11,19 @@ def comb(a,b):
 	yield from b
 
 def run():
-	a = [1,2,3,4]
-	b = [5,6,7,8]
-	combRun = comb(a,b)
-	for i in combRun:
+	a = [1,2,3,4, "a,"]
+	b = [5,6,7,8, "b,"]
+
+	for i in comb(a,b):
 		print(i, end="  ")
 
-run()
+
+def run2(): 
+	a = [1,2,3,4, "a,"]
+	b = [5,6,7,8, "b,"]
+# based on the results, it seems that 
+# itll consume everything in order, 
+# however nested it looks. 
+	for i in comb(comb(a,b), comb(b,b)):
+		print(i, end="  ")
+run2()
