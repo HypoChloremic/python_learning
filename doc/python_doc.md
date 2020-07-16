@@ -58,3 +58,28 @@ Note that the BITWISE OR (`|`) in python to add different modifiers for the rege
 
 #### Inline modifier
 One adds the flags after the `?` in `(?...)` e.g. re.match('(?si)[a-z]+', ...) where the flags `s` and `i` are used. 
+
+# Tar files
+Tar files are is a file format designed to aggregate multiple files under one umbrella file, with the `.tar` file-extension. 
+## Reading tar-files in python
+To read a tar file in python, the `tarfile` module can be used.
+
+```python
+import tarfile as tf
+with tf.open(f'{file_name}.tar', 'r') as tfile:
+	tf.getnames() # this will return the names of the files inside the tar file
+	tf.getmembres() # seemingly returns the object members of the tar file. 
+	tf.extractall(member, path='.') # Will extract the tar file to the given path
+									# Note that 'member' is not needed.
+```
+
+## Closing tarfile
+remember that the `tarfile` module does not have a `__enter__` and `__exit__`, which in turn implies that the `with` statement will not close the tarfile. 
+To close:
+
+```python
+import tarfile as tf
+with tf.open('file.tar', 'r') as tfile:
+	tfile.extractall()
+tfile.close()
+```
