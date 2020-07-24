@@ -83,3 +83,14 @@ with tf.open('file.tar', 'r') as tfile:
 	tfile.extractall()
 tfile.close()
 ```
+
+# gzip
+## reading a gzip file
+The `gzip` module is used extensively here:
+````python
+import gzip
+with gzip.open('gile.gzip', 'r') as file:
+	for line in file:
+		print(line)
+	
+```
