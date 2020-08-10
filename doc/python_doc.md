@@ -45,6 +45,7 @@ re.search(r'(?<=\d:\W)([a-zA-Z\W]+)')
 5. ***ASCII [a]*** - Match to ASCII-only characters, rather than the full Unicode character set
 
 ### Use modifiers
+
 #### Bitwise
 To use modifiers: 
 
@@ -58,3 +59,25 @@ Note that the BITWISE OR (`|`) in python to add different modifiers for the rege
 
 #### Inline modifier
 One adds the flags after the `?` in `(?...)` e.g. re.match('(?si)[a-z]+', ...) where the flags `s` and `i` are used. 
+
+### Case insensitivity
+the `i` flag offers a nice opportunity to make syntax easier, because [a-zA-Z] is not necessary, but just [a-z] | [A-Z] suffices with the `i` flag.
+
+
+# Numpy
+## Difference between to sets
+Assume to numpy arrays with strings, and we wish to find the difference:
+
+```python
+a,b = np.array([...]), np.array([...])
+np.setdiff1d(a,b) # will return that difference
+``` 
+
+
+# Python lists 
+## Reversing list
+
+```python
+a = ['a','b', 'c']
+r = [i for i in reversed(a)] # = ['c', 'b', 'a']
+```
