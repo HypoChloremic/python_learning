@@ -11,7 +11,8 @@ import re
 
 # POSITIVE: the assertion IS present
 # 'Look-BEHIND' assertion: is using `<=` instead of `=` in the assertion, i.e. (?<= ...)
-# The look-behind assertion refers to identifying an assertion (which does not highlight, instead just matched boolean wise, binary
+# The look-behind assertion refers to identifying an assertion 
+# (which does not highlight, instead just matched boolean wise, binary
 # if it is there or not) BEFORE an expression. 
 # Behind: (?<=  ), is preceeding our pattern.
 
@@ -37,7 +38,23 @@ re.search(r'(?<=\d:\W)([a-zA-Z\W]+)')
 # negative look-ahead: '(?! ...)'
 ```
 
+
+
+### Matching in the beggining and end
+
+Assume a vector of strings. We would like to match the strings which start with `Endo` and end with either `-` or `+`:
+
+```python
+import re
+vec = ['Endo asdas +', 'Endo asdas -', 'ndo asdas +', 'Endosfeaac +', ]
+# to match these we can do the following:
+re.match(r"(?=.*Endo).*(?<=[+-])")
+```
+
+First we added `.*` to the look-ahead assertion before putting Endo there, because we are saying that it should look through anything before the assertion to match the pattern. Furthermore we added `.*` in the main pattern claiming that it should highlight the entire subsequent string. Finally we have `?<=[+-]` for the look-behind, which tells that the pattern should end with either one `+ or -`.
+
 ## Modifiers
+
 1. ***Single line [s]*** - Allows the . metacharacter (which matches everything except newlines) to match newlines too
 2. ***Multi-line [m]*** - ^ and $ now match the beginning/end of lines, rather than default behavior of matching beggining/end of entire string
 3. ***Insensitive [i]*** - Upper and lower-case characters are matched, e.g. A = a [This is a great one]
@@ -72,7 +89,7 @@ Assume to numpy arrays with strings, and we wish to find the difference:
 ```python
 a,b = np.array([...]), np.array([...])
 np.setdiff1d(a,b) # will return that difference
-``` 
+```
 
 
 # Python lists 
@@ -87,7 +104,7 @@ Tar files are is a file format designed to aggregate multiple files under one um
 ## Reading tar-files in python
 To read a tar file in python, the `tarfile` module can be used.
 
-```python
+​```python
 import tarfile as tf
 with tf.open(f'{file_name}.tar', 'r') as tfile:
 	tf.getnames() # this will return the names of the files inside the tar file
@@ -115,3 +132,5 @@ import gzip
 with gzip.open('gile.gzip', 'r') as file:
 	for line in file:
 		print(line)
+
+````
