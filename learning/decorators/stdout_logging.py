@@ -24,3 +24,7 @@ class RandomClass:
     @stdout_log
     def class_method(self):
         return 'random class method'
+
+if '__main__' == __name__:
+    rn = RandomClass()
+    rn.class_method()
