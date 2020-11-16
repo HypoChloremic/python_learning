@@ -1,11 +1,6 @@
 import imageio
 import os, sys
 
-# class TargetFormat(object):
-#     GIF = ".gif"
-#     MP4 = ".mp4"
-#     AVI = ".avi"
-
 def convertFile(inputpath, outputpath):
     """Reference: http://imageio.readthedocs.io/en/latest/examples.html#convert-a-movie"""
     reader = imageio.get_reader(inputpath)
@@ -13,13 +8,13 @@ def convertFile(inputpath, outputpath):
 
     writer = imageio.get_writer(outputpath, fps=fps)
     for i,im in enumerate(reader):
-        sys.stdout.write("\rframe {0}".format(i))
-        sys.stdout.flush()
-        writer.append_data(im)
-    print("\r\nFinalizing...")
+        if i%10 == 0: # will save every tenth frame
+            print(f'Saving frame: {i}')
+            writer.append_data(im)
+    print("Finalizing...")
     writer.close()
     print("Done.")
 
 if '__main__' == __name__:
-    convertFile("C:\\Users\\Admin\\Documents\\prwork\\projects\\snipping-tool\\doc\\main.mp4", 
-                "C:\\Users\\Admin\\Documents\\prwork\\projects\\snipping-tool\\doc\\main.gif")
+    convertFile("\\projects\\snipping-tool\\doc\\main.mp4", 
+                "\\projects\\snipping-tool\\doc\\main.gif")
