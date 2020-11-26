@@ -1,3 +1,4 @@
+# Remember to read the main learning markdown file
 # To run the app in Windows, from command line, CMD:
 # >>> set FLASK_APP=helloworld_app.py
 # in PowerShell
@@ -25,6 +26,14 @@ def hello():
 # accessible inside the function. 
 # Noting however, that the variable symbol is the same
 # as the arg being passed to the function. 
+# 
+# Available converter types:
+# string: (default) accepts any text without a slash
+# int: accepts positive integers
+# float: accepts positive floating point values
+# path: like string but also accepts slashes
+# uuid: accepts UUID strings
+
 @app.route('/user/<username>')
 def show_user_profile(username):
     # show the user profile for that user
