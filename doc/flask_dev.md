@@ -1,5 +1,8 @@
 # Flask Development
 
+#### Environment in use
+Seemingly, the root environment is being used for this. 
+
 #### HTTP methods
 
 Assume we start with
@@ -89,3 +92,6 @@ flask uses `Jinja2` for the template engine stuff. An example template:
 {% endif %}
 ```
 
+### Run flask
+
+`>>> set FLASK_APP=xxx.py`
