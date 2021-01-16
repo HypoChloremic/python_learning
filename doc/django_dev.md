@@ -1,5 +1,9 @@
 # Django development
+### Versions
+Currently: env webdev, python 3.9.1, django 3.1.4
 ## Starting a project - Tut
+
+
 To start a project, `cd` into the relevant directory, where the project folder is going to be located:
 Run subsequently
 
@@ -112,6 +116,61 @@ This directory structure will house the poll application.
 open `polls/views.py`. Insert:
 
 ```python
+from django.http import HttpRequest
 
+def index(requst):
+    return HttpResponse("hello world...")
+```
+
+This is the simplest view possible in Django. To call the view, we need to map it to a URL - and for this we need a URLconf.
+
+To create a URLconf in the polls directory, create a file called urls.py. Your app directory should now look like:
 
 ```
+polls/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    urls.py
+    views.py
+```
+
+In the `polls/urls.py` include the following code. 
+```python
+from django-urls import paths
+from . import views # accessing the `views.py` file that we modded above, and the `index` method
+
+urlpatterns = [
+    path("", views.index, name="index")
+]
+```
+The next step is to point the root URLconf at the polls.urls module. When referring to the ***root*** URLconf, we are referring to `mysite`! 
+In mysite/urls.py, add an import for django.urls.include and insert an include() in the urlpatterns list, so you have: 
+
+`mysite/urls.py`
+```python
+from django.contrib import admin # unclear what admin does
+from django.urls import include, path
+
+urlpatterns = [
+    path("polls/", include("polls.urls")), # this may be referring to the `urls.py` file in `polls` folder...
+    path("admin/", admin.site.urls),
+]
+```
+The include() function allows referencing other URLconfs. 
+Whenever Django encounters include(), it chops off whatever part of the URL matched up to that point and sends the remaining string to the included URLconf for further processing.
+
+The idea behind include() is to make it easy to plug-and-play URLs. Since polls are in their own URLconf (polls/urls.py), 
+they can be placed under “/polls/”, or under “/fun_polls/”, or under “/content/polls/”, or any other path root, and the app will still work.
+
+### when to use include()
+
+You should always use `include()` when you include other URL patterns. `admin.site.urls` is the only exception to this.
+
+### verify the index view
+You have now wired an index view into the URLconf. Verify it’s working with `...\> py manage.py runserver`
+
