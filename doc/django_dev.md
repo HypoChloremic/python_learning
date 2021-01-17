@@ -161,10 +161,32 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 ]
 ```
-The include() function allows referencing other URLconfs. 
-Whenever Django encounters include(), it chops off whatever part of the URL matched up to that point and sends the remaining string to the included URLconf for further processing.
+The `include()` function allows referencing other URLconfs. 
 
-The idea behind include() is to make it easy to plug-and-play URLs. Since polls are in their own URLconf (polls/urls.py), 
+Whenever Django encounters `include()`, it ***chops off whatever part of the URL matched up to that point and sends the remaining string to the included URLconf for further processing***.
+
+Alltså, om vi då har i `mysite/mysite/urls.py` följande:
+```python
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path("polls/", include("polls.urls")),
+    path("admin/", admin.site.urls),
+]
+```
+sen följande i `mysite/polls/urls.py`
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("pp", views.index, name="index"),
+]
+```
+Då när vi access: `http://127.0.0.1:8000/polls/pp` kommer vi få svaret. Notera `pp` i slutet, som vi adderade i den `include()` pathen! Alltså moddade vi the `urlpatterns`
+
+The idea behind `include()` is to make it easy to plug-and-play URLs. Since polls are in their own URLconf (polls/urls.py), 
 they can be placed under “/polls/”, or under “/fun_polls/”, or under “/content/polls/”, or any other path root, and the app will still work.
 
 ### when to use include()
@@ -174,3 +196,59 @@ You should always use `include()` when you include other URL patterns. `admin.si
 ### verify the index view
 You have now wired an index view into the URLconf. Verify it’s working with `...\> py manage.py runserver`
 
+
+# Some details
+
+## path()
+The `path()` returns an element, which in turn is put inside the 
+`list` object `urlpatterns`
+
+Parameters: `path(route, view, kwargs=None, name=None)`
+* the `route` argument = the url pattern. can contain angle brackets e.g. `<str:username>` to capture that part of the url and send it as a keyword *to* `view`.
+    * Note that inside the angled brackets, it is possible to use typcasting, limiting the content type of that part of the url, e.g. `<int:section>` etc. 
+* the `view` argument is a "view function", which is a result of `as_view()`. This is for class-based views
+
+
+## include()
+The `include()` the following can be read in the docs "Takes a full import path to another URLconf module that should be “included” in this place."
+
+example:
+```python
+path(route='index', view=include('polls.urls'))
+```
+
+what `include('polls.urls')` will then do is to go into the import path of `polls.urls` and then 
+
+## django views
+`views` in django is key for *apps*, built in django. Simplified take: 
+* a function/class takes a ***web request*** and returns a ***web response***
+
+### Capabilities of views
+***Views can***:
+* fetch objects from database, 
+* modify those objects, 
+* render forms, 
+* return HTML, 
+* and more. 
+
+***Note***: 
+* from django "a view function, `view` for short, is a function that takes ***Web request*** and ***returns*** a ***Web response***. This response can be the HTML contents of a Web page, or a redirect, or a 404 error, or an XML document, or an image . . . or anything, really."
+* The view itself contains whatever arbitrary logic is necessary to return that response.
+
+### Two types of views
+there is the `function-based views (FBVs)`, and `class-based views (CBVs)`. CBVs was added after FBVs, it adds modularity and functionality, so we dont have to rewrite code over and over. 
+
+Django ships with a bunch of different CBVs that we can use. 
+
+An example of a view that returns a current date and time, as HTML:
+```python
+from django.http import HttpResponse
+import datetime
+
+def current_datetime(request):
+    now = datetime.datetime.now()
+    html = "<html><body>It is now %s.</body></html>" % now
+    return HttpResponse(html)
+```
+
+So this script can be stored anywhere on the Python path, ***Implying that it should be somewhere where we can use `import`** 
