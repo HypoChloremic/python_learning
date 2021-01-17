@@ -187,6 +187,7 @@ urlpatterns = [
 Då när vi access: `http://127.0.0.1:8000/polls/pp` kommer vi få svaret. Notera `pp` i slutet, som vi adderade i den `include()` pathen! Alltså moddade vi the `urlpatterns`
 
 The idea behind `include()` is to make it easy to plug-and-play URLs. Since polls are in their own URLconf (polls/urls.py), 
+
 they can be placed under “/polls/”, or under “/fun_polls/”, or under “/content/polls/”, or any other path root, and the app will still work.
 
 ### when to use include()
@@ -251,4 +252,4 @@ def current_datetime(request):
     return HttpResponse(html)
 ```
 
-So this script can be stored anywhere on the Python path, ***Implying that it should be somewhere where we can use `import`** 
+So this script can be stored anywhere on the Python path, ***Implying that it should be somewhere where we can use `import`*** 
