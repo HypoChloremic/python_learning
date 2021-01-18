@@ -1,6 +1,7 @@
-# Django development
+# Django Beginner Project
 ### Versions
 Currently: env webdev, python 3.9.1, django 3.1.4
+
 ## Starting a project - Tut
 
 
@@ -198,6 +199,15 @@ You should always use `include()` when you include other URL patterns. `admin.si
 You have now wired an index view into the URLconf. Verify it’s working with `...\> py manage.py runserver`
 
 
+
+## Database setup
+Open `mysite/settings.py`. its a normal `module` (that can be imported yani), with module-level variables representing django settings.
+
+### By default
+By default, it is configred to use SQLite, which is the easiest choice. SQLite is included in python, no need to install anything. 
+
+
+
 # Some details
 
 ## path()
@@ -253,3 +263,4 @@ def current_datetime(request):
 ```
 
 So this script can be stored anywhere on the Python path, ***Implying that it should be somewhere where we can use `import`*** 
+
