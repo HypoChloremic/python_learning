@@ -571,8 +571,102 @@ Django solves the problem of creating a unified interface for site administrator
 
 The admin isn’t intended to be used by site visitors. It’s for site managers.
 
-#### Creting an admin user
+#### Creating an admin user
 
+Need a user who can login to the admin site: Run the following:
+```
+>>> python manage.py createsuperuser
+username: admin
+email address: admin@example.com
+Password: *******
+Password (again): ******
+Superuser created successfully
+```
+
+#### Start the (development) server
+Let us run the server now:
+`python manage.py runserver`
+
+and go to the admin page `http://127.0.0.1:8000/admin/`
+and sign in. 
+
+#### Inside the admin page
+We are presented by "editable content": `groups` and `users`. These are provided by `django.contrib.auth`
+
+#### Make the poll app modifiable in the admin
+The poll app is not displayed seemingly on the admin index page. 
+we need to tell the admin that Question objects have an admin interface. To do this, open the `polls/admin.py` file, and edit it to look like this:
+
+```python
+from django.contrib import admin
+
+from .models import Question
+
+admin.site.register(Question)
+```
+
+Save it to file, and just reload the admin page, and we will se it on the admin index page! 
+
+##### The Questions page
+
+Enter the Questions page
+
+The form is automatically generated from the Question model.
+The different model field types (DateTimeField, CharField) correspond to the appropriate HTML input widget. Each type of field knows how to display itself in the Django admin.
+
+Each DateTimeField gets free JavaScript shortcuts. Dates get a “Today” shortcut and calendar popup, and times get a “Now” shortcut and a convenient popup that lists commonly entered times.
+
+
+### Views
+* In Django, web pages and other content are delivered by views. Each view is represented by a Python function (or method, in the case of class-based views). 
+* Django will choose a view by examining the URL that’s requested (to be precise, the part of the URL after the domain name)
+
+#### URLconfs
+A URL pattern is the general form of a URL - for example: /newsarchive/<year>/<month>/.
+
+To get from a URL to a view, Django uses what are known as ‘URLconfs’. A URLconf maps URL patterns to views.
+
+#### writing more views
+
+`polls/views.py`
+
+```python
+def detail(request, qustion_id):
+    return HttpResponse(f"You're looking at question {question_id}.")
+
+def results(request, question_id):
+    response = f"You're looking at the results of question {question_id}."
+    return HttpResponse(response)
+
+def vote(request, question_id):
+    return HttpResponse(f"You're  voting on question {question_id}.")
+```
+
+Note that we are using the variable `question_id`
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("pp", views.index, name="index"),
+    path("<int:question_id>/", views.detail, name="detail"),
+    path("<int:question_id>/results/>", views.results, name="results"),
+    path("<int:question_id>/vote/", views.vote, name="vote")
+]
+```
+
+om vi därför matar in `http://127.0.0.1:8000/polls/100/` så får vi `print`: 
+"You're looking at question 100."
+
+When somebody requests a page from your website – say, “/polls/34/”: 
+* Django will load the mysite.urls Python module because it’s pointed to by the ROOT_URLCONF setting. 
+* It finds the variable named urlpatterns and traverses the patterns in order. 
+* After finding the match at 'polls/', it strips off the matching text ("polls/") and sends the remaining text – "34/" – to the ‘polls.urls’ URLconf for further processing. 
+* There it matches '<int:question_id>/', resulting in a call to the detail() view like so: `detail(request=<HttpRequest object>, question_id=34)`
+
+#### Writing views that do stuff
+Each view is responsible for doing one of two things: returning an HttpResponse object containing the content for the requested page, or raising an exception such as Http404. The rest is up to you
 
 # Some details
 

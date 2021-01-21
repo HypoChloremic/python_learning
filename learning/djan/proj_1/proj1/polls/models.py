@@ -15,8 +15,8 @@ class Question(models.Model):
         return self.question_text
 
 class Choice(models.Model):
-    # TODO: what does ForeignKey do? we are passing it the Question class we just
-    # created
+    # TODO: what does ForeignKey do? we are passing it the 
+    # Question class we just created
     question = models.ForeignKey(
             Question, 
             on_delete = models.CASCADE,
