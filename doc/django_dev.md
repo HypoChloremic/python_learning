@@ -198,8 +198,6 @@ You should always use `include()` when you include other URL patterns. `admin.si
 ### verify the index view
 You have now wired an index view into the URLconf. Verify it’s working with `...\> py manage.py runserver`
 
-
-
 ## Database setup
 Open `mysite/settings.py`. its a normal `module` (that can be imported yani), with module-level variables representing django settings.
 
@@ -385,10 +383,10 @@ Running migrations:
 #### Three-step guide for models changes
 1. Chnage your models in `models.py`
 2. run `python manage.py makemigrations` to create migrations for those changes
-3. run `python manage.py mgirate` to apply those changes to the database
+3. run `python manage.py migrate` to apply those changes to the database
 
+## Playing with the database API
 
-### Playing with the API
 There is an interactive django API we can use. To invoke the shell use: 
 
 To invoke the shell: 
@@ -434,7 +432,7 @@ datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=<UTC>)
 <QuerySet [<Question: Question object (1)>]>
 ```
 
-Wait a minute. <Question: Question object (1)> isn’t a helpful representation of this object. Let’s fix that by editing the Question model (in the polls/models.py file) and adding a __str__() method to both Question and Choice:
+Wait a minute. `<Question: Question object (1)>` isn’t a helpful representation of this object. Let’s fix that by editing the Question model (in the polls/models.py file) and adding a __str__() method to both Question and Choice:
 
 ##### adding __str__()
 So this is nice, that we do not like the direct representation when we write `polls.models.Question` in the shell, that we wish to modify the output: 
@@ -474,7 +472,7 @@ class Question(models.Model):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 ```
 
-Save these changes and start a new Python interactive shell by running python manage.py shell again:
+Save these changes (we do not need to run `python manage.py migrate`, just save the code to the file) and start a new Python interactive shell by running `python manage.py shell` again:
 ```python
 >>> from polls.models import Choice, Question
 
@@ -486,6 +484,7 @@ Save these changes and start a new Python interactive shell by running python ma
 # keyword arguments.
 >>> Question.objects.filter(id=1)
 <QuerySet [<Question: What's up?>]>
+           
 >>> Question.objects.filter(question_text__startswith='What')
 <QuerySet [<Question: What's up?>]>
 
@@ -511,7 +510,9 @@ DoesNotExist: Question matching query does not exist.
 >>> q = Question.objects.get(pk=1)
 >>> q.was_published_recently()
 True
+```
 
+```python
 # Give the Question a couple of Choices. The create call constructs a new
 # Choice object, does the INSERT statement, adds the choice to the set
 # of available choices and returns the new Choice object. Django creates
@@ -539,7 +540,10 @@ True
 <QuerySet [<Choice: Not much>, <Choice: The sky>, <Choice: Just hacking again>]>
 >>> q.choice_set.count()
 3
+```
 
+###### Deleting one of the choices
+```python
 # The API automatically follows relationships as far as you need.
 # Use double underscores to separate relationships.
 # This works as many levels deep as you want; there's no limit.
@@ -552,6 +556,23 @@ True
 >>> c = q.choice_set.filter(choice_text__startswith='Just hacking')
 >>> c.delete()
 ```
+
+###### General
+Check down below why `choice_set` specifically is used, it related to the Django backtracing ORM, that automatically generates the fields when using `ForeignKey`. 
+
+### The Django admin
+Generating admin sites for your staff or clients to add, change, and delete content is tedious work that doesn’t require much creativity. For that reason, Django entirely automates creation of admin interfaces for models.
+
+Django was written in a newsroom environment, with a very clear separation between “content publishers” and the “public” site. 
+
+Site managers use the system to add news stories, events, sports scores, etc., and that content is displayed on the public site. 
+
+Django solves the problem of creating a unified interface for site administrators to edit content.
+
+The admin isn’t intended to be used by site visitors. It’s for site managers.
+
+#### Creting an admin user
+
 
 # Some details
 
@@ -609,3 +630,35 @@ def current_datetime(request):
 
 So this script can be stored anywhere on the Python path, ***Implying that it should be somewhere where we can use `import`*** 
 
+## models.ForeignKey
+In the tutorial, we write in the `Choice` class the following:
+`question = models.ForeignKey(Question, on_delete = models.CASCADE)`
+
+Thus, each `Choice` has explicitly a `Question` field, which we declared in the model. 
+
+### The django ORM object-relational mapping layer 
+Django's ORM, follows the relationship between `Choice` and therefore `Question` backwards!
+
+It will ***automatically*** generate a field ***on each instance (of `Question`?)*** called `foo_set`, where `foo` is the model (i.e. `Choice`) with a `ForeignKey` field ***to that*** model (i.e. `Question`).
+
+* Therefore, `choice_set` becomes a field available to the `Question` object. 
+* `choice_set` is a `RelatedManager`, which isa ble to create querysets of `Choice` objects, which ***relate*** to the `Question` instance, e.g. `q.choice_set.all()`
+
+### Parameters
+* `related_name`: for the example above, django automatically generates `foo_set -> choice_set`, but we can manuallt set the name. for instance `ForeignKey(related_name="Choice_set")`
+
+## class RelatedManager
+In the standard tutorial, as we write about the `ForeignKey` part, is that `choice_set` becomes a `RelatedManager`. This manager in turn ships with a bunch of methods
+
+https://docs.djangoproject.com/en/3.1/ref/models/relations/
+
+the create method is mentioned there. 
+
+### RelatedManger.create()
+Seemingly this will generate a ***NEW*** object `Choice`, then attaching it to the `Question` object. 
+
+### RelatedManager.all()
+```python
+>>> q.Choice_set.all()
+<QuerySet [<Choice: Not much>, <Choice: The sky>, <Choice: Just hacking again>]>
+```
