@@ -553,10 +553,6 @@ True
 >>> c.delete()
 ```
 
-
-
-
-
 # Some details
 
 ## path()
