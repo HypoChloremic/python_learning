@@ -862,6 +862,62 @@ The template system uses dot-lookup syntax to access variable attributes. In the
 See the https://docs.djangoproject.com/en/3.1/topics/templates/ guide for more about templates.
 
 
+### Removing harcode URLs in templates
+Recall when we reote the link to a `question` in `polls/index.html`, the link was harcoded as:
+`<li><a href="/polls/{{ question.id }}/">{{question.question_text}}</a></li>`
+
+The problem with this hardcoded, tightly-coupled approach is that it becomes challenging to change URLs on projects with a lot of templates. 
+
+However, since you defined the `name` argument in the `path()` functions in the `polls.urls` module, you can ***remove a reliance on specific URL paths*** defined in your url configurations by using the `{% url %}` template tag:
+
+`<li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>`
+
+
+The way this works is by looking up the URL definition as specified in the polls.urls module. 
+
+You can see exactly where the URL name of ‘detail’ is defined below:
+```python
+# ...
+# the 'name' value as called by the {% url %} template tag
+path('<int:question_id>/', views.detail, name='detail'),
+# ...
+```
+
+### Namespacing URL names
+
+The tutorial project has just one app, polls. In real Django projects, there might be five, ten, twenty apps or more. How does Django differentiate the URL names between them? For example, the polls app has a `detail` view, and so might an app on the same project that is for a blog. How does one make it so that Django knows which app view to create for a url when using the `{% url %}` template tag?
+
+The answer is to add `namespaces` to your URLconf. In the `polls/urls.py` file, go ahead and add an `app_name` to set the application namespace:
+
+`polls/urls.py`
+
+```python
+from django.urls import path
+
+from . import views
+
+app_name = 'polls' # this is the new part
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('<int:question_id>/', views.detail, name='detail'),
+    path('<int:question_id>/results/', views.results, name='results'),
+    path('<int:question_id>/vote/', views.vote, name='vote'),
+]
+```
+
+Now change your `polls/index.html` template from:
+```html
+<li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+```
+
+into 
+
+`polls/templates/polls/index.html`
+
+```html
+<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+```
+
 # Some details
 
 ## path()

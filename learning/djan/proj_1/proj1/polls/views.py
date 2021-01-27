@@ -49,4 +49,4 @@ def results(request, question_id):
 
 
 def vote(request, question_id):
-    return HttpResponse(f"You're  voting on question {question_id}.")
+    return render(request, "polls/voting.html", {"mozArg": "halloooo"})
