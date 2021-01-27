@@ -666,7 +666,201 @@ When somebody requests a page from your website – say, “/polls/34/”:
 * There it matches '<int:question_id>/', resulting in a call to the detail() view like so: `detail(request=<HttpRequest object>, question_id=34)`
 
 #### Writing views that do stuff
-Each view is responsible for doing one of two things: returning an HttpResponse object containing the content for the requested page, or raising an exception such as Http404. The rest is up to you
+Each view is responsible for doing one of two things: returning an `HttpResponse` object containing the content for the requested page, or raising an exception such as `Http404`. The rest is up to you
+
+Your view can read records from a database, or not. It can use a template system such as Django’s – or a third-party Python template system – or not. It can generate a PDF file, output XML, create a ZIP file on the fly, anything you want, using whatever Python libraries you want.
+
+All Django wants is that `HttpResponse`. Or an exception.
+
+
+Let’s use Django’s own database API, which we covered in Tutorial 2. Here’s one stab at a new `index()` view, which displays the latest 5 poll questions in the system, separated by commas, according to publication date:
+
+
+`polls/views.py`
+```python
+from django.http import HttpResponse
+
+from .models import Question
+
+
+def index(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    output = ', '.join([q.question_text for q in latest_question_list])
+    return HttpResponse(output)
+
+# Leave the rest of the views (detail, results, vote) unchanged
+```
+There’s a problem here, though: the page’s design is hard-coded in the view. If you want to change the way the page looks, you’ll have to edit this Python code. So let’s use Django’s template system to separate the design from Python by creating a template that the view can use.
+
+In `$ python manage.py shell`, one can add more question objects:
+```python
+> from django.utils import timezone
+> from polls.models import Question, Choice
+>
+> random_q = Question(question_text="random text", pub_date=timezone.now())
+> random_q.save()
+```
+
+#### Templates - `polls/templates`
+
+First, create a directory called templates in your polls directory. Django will look for templates in there.
+
+Your project's `TEMPLATES` setting describe how Django will load and render templates. The default settings file configures a `DjangoTemplates` backend, whose `APP_DIRS` options is set to `True`. By convention, `DjangoTemplates` looks for a "templates" subdirectory in each of the `INSTALLED_APPS`.
+
+In the `polls/templates` folder, create another folder called `polls`, within which an `index.html`. Thus `polls/templates/polls/index.html`. 
+
+Due to how the `app_directories` template loader works, as described above... you can refer to this template within django as `polls/index.html`!
+
+
+##### Template namespacing
+
+Now we might be able to get away with putting our templates directly in polls/templates (rather than creating another polls subdirectory), but it would actually be a bad idea. Django will choose the first template it finds whose name matches, and if you had a template with the same name in a different application, Django would be unable to distinguish between them. We need to be able to point Django at the right one, and the best way to ensure this is by namespacing them. That is, by putting those templates inside another directory named for the application itself.
+
+
+##### Creating template index.html
+in `polls/templates/polls/index.html`
+```python
+{% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+            <li>
+                <a href="/polls/{{ question.id }}/">
+                    {{ question.question_text }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+{% else %}
+        <p>No polls are available</p>
+{% endif %}
+```
+
+##### Updating the index view with template
+Now let’s update our index view in `polls/views.py` to use the template:
+```python
+from django.http import HttpResponse
+from django.template import loader
+
+from .models import Question
+
+def index(request):
+    latest_question_list = Question.objects.order_by("-pub_date")[:5]
+
+    # This is the important part, as it will allow us
+    # to bring in the template we created
+    template = loader.get_template("polls/index.html")
+
+    context = {
+        "latest_question_list": latest_question_list,        
+    }
+
+    return HttpResponse(template.render(context, request))
+```
+Via `django.template.loader("polls/index.html")` we will be able to laod the template, and pass it a context. 
+
+***The context is a dictionary which maps variable-names to Python objects***
+
+Load the page by pointing yout browser at `/polls/`. 
+
+#### A shortcut: render()
+
+It’s common to load a template, fill a context and return an HttpResponse object with the rendered template. Django provides a shortcut. 
+
+Here’s the full `index()` view, rewritten:
+`polls/views.py`
+```python
+from django.shortcuts import render
+
+from .models import Question'
+
+def index(request):
+    latest_question_list = Question.objects.order_by("-pub_date")[:5]
+    context = { "latest_question_list": latest_question_list }
+    return render(request, "polls/index.html", context)
+```
+
+
+Note that once we’ve done this in all these views, we no longer need to import loader and HttpResponse (you’ll want to keep `HttpResponse` if you still have the stub methods for `detail`, `result`, `vote`).
+
+
+#### Raising a 404 error
+
+Now, lets tackle the "question detail view". The page that displays the qeston text for a given poll. 
+
+Here's the view
+`polls/views.py`
+
+```python
+from django.http import Http404
+from django.shortcuts import render
+
+from .models import Question
+
+# ... all the rest
+
+def detail(request, question_id):
+    try:
+        question = Question.objects.get(pk=question_id)
+    except Question.DoesNotExist:
+        # This is where the 404 error occurs, it will exist the 
+        # method
+        raise Http404("Question does not exist")
+    return render(request, 'polls/detail.html', {'question': question})
+```
+
+We’ll discuss what you could put in that polls/detail.html template a bit later, but if you’d like to quickly get the above example working, a file containing just:
+
+`polls/templates/polls/detail.html`
+```html
+{{ question }}
+```
+
+
+#### Shortcut for get_object_or_404()
+It's very common to use `get()` and raise `Http404`, if the object doesnt exist. Django provides a shortcut. here's detail view, rewritten:
+
+`polls/views.py`
+
+```python
+from django.shortcuts import get_object_or_404, render
+
+from .models import Question
+
+# [...]
+
+def detail(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    context = {"question": question}
+    return render(request, "polls/detail.html", context)
+```
+
+The get_object_or_404() function takes a Django model as its first argument and an arbitrary number of keyword arguments, which it passes to the `get()` function of the ***model’s manager*** (i.e. the `Question` class model we). It raises Http404 if the object doesn’t exist.
+
+There’s also a get_list_or_404() function, which works just as get_object_or_404() – except using filter() instead of get(). It raises Http404 if the list is empty.
+
+
+### Use the Template System
+Back to the `detail()` view for our poll application. Given the `context` variable `question`, here's what the `polls/detail.html` could look like:
+
+`polls/template/polls/detail.html`
+
+```html
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
+```
+#### dot-lookup syntax in templates
+
+The template system uses dot-lookup syntax to access variable attributes. In the example of `{{ question.question_text }}`, first Django does a dictionary lookup on the object `question`. Failing that, it tries an attribute lookup – which works, in this case. If attribute lookup had failed, it would’ve tried a list-index lookup.
+
+#### Method calling in templates
+***Method-calling*** happens in the `{% for %} loop: question.choice_set.all` is interpreted as the `question.choice_set.all()` (in Python code ya3ni, note the `all()` method), which returns an iterable of `Choice` objects and is suitable for use in the `{% for %}` tag.
+
+See the https://docs.djangoproject.com/en/3.1/topics/templates/ guide for more about templates.
+
 
 # Some details
 
