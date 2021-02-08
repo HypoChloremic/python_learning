@@ -527,8 +527,10 @@ True
 # Create three choices.
 >>> q.choice_set.create(choice_text='Not much', votes=0)
 <Choice: Not much>
+
 >>> q.choice_set.create(choice_text='The sky', votes=0)
 <Choice: The sky>
+
 >>> c = q.choice_set.create(choice_text='Just hacking again', votes=0)
 
 # Choice objects have API access to their related Question objects.
@@ -839,7 +841,9 @@ The get_object_or_404() function takes a Django model as its first argument and 
 There’s also a get_list_or_404() function, which works just as get_object_or_404() – except using filter() instead of get(). It raises Http404 if the list is empty.
 
 
+
 ### Use the Template System
+
 Back to the `detail()` view for our poll application. Given the `context` variable `question`, here's what the `polls/detail.html` could look like:
 
 `polls/template/polls/detail.html`
@@ -862,8 +866,10 @@ The template system uses dot-lookup syntax to access variable attributes. In the
 See the https://docs.djangoproject.com/en/3.1/topics/templates/ guide for more about templates.
 
 
+
 ### Removing harcode URLs in templates
-Recall when we reote the link to a `question` in `polls/index.html`, the link was harcoded as:
+
+Recall when we wrote the link to a `question` in `polls/index.html`, the link was harcoded as:
 `<li><a href="/polls/{{ question.id }}/">{{question.question_text}}</a></li>`
 
 The problem with this hardcoded, tightly-coupled approach is that it becomes challenging to change URLs on projects with a lot of templates. 
@@ -883,11 +889,19 @@ path('<int:question_id>/', views.detail, name='detail'),
 # ...
 ```
 
+
+
 ### Namespacing URL names
 
-The tutorial project has just one app, polls. In real Django projects, there might be five, ten, twenty apps or more. How does Django differentiate the URL names between them? For example, the polls app has a `detail` view, and so might an app on the same project that is for a blog. How does one make it so that Django knows which app view to create for a url when using the `{% url %}` template tag?
+* The tutorial project has just one app, polls. In real Django projects, there might be five, ten, twenty apps or more. How does Django differentiate the URL names between them? 
+* For example, the polls app has a `detail` view, and so might an app on the same project that is for a blog. 
+* How does one make it so that Django knows which app view to create for a url when using the `{% url %}` template tag?
+* The answer is to add `namespaces` to your URLconf. 
+* In the `polls/urls.py` file, go ahead and add an `app_name` to set the application namespace:
 
-The answer is to add `namespaces` to your URLconf. In the `polls/urls.py` file, go ahead and add an `app_name` to set the application namespace:
+
+
+Thus, the label before the colon refers to what app we are going to be looking at. 
 
 `polls/urls.py`
 
@@ -905,7 +919,7 @@ urlpatterns = [
 ]
 ```
 
-Now change your `polls/index.html` template from:
+Now change your `polls/templates/polls/index.html` template from:
 ```html
 <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
 ```
@@ -917,6 +931,31 @@ into
 ```html
 <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
 ```
+
+
+
+### Write a minimal form
+
+Let us update our `polls/templates/polls/detail.html`:
+
+```html
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'polls:vote' question_id %}" method="post">
+    {% csfr_token %}
+    {% for choice in question.Choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+    {% endfor %}
+    <input type="submit" value="Vote">
+</form>
+```
+
+* The above template displays a radio button for each question choice. The `value` of each radio button is the associated question choice’s ID. The `name` of each radio button is `"choice"`. That means, when somebody selects one of the radio buttons and submits the form, it’ll send the POST data `choice=#` where # is the ID of the selected choice. This is the basic concept of HTML forms.
+* We set the form’s `action` to `{% url 'polls:vote' question.id %}`, and we set `method="post"`. Using `method="post"` (as opposed to `method="get"`) is very important, because the act of submitting this form will alter data server-side. Whenever you create a form that alters data server-side, use `method="post"`. This tip isn’t specific to Django; it’s good Web development practice in general.
+* `forloop.counter` indicates how many times the [`for`](https://docs.djangoproject.com/en/3.1/ref/templates/builtins/#std:templatetag-for) tag has gone through its loop
+* Since we’re creating a POST form (which can have the effect of modifying data), we need to worry about Cross Site Request Forgeries. Thankfully, you don’t have to worry too hard, because Django comes with a helpful system for protecting against it. In short, all POST forms that are targeted at internal URLs should use the [`{% csrf_token %}`](https://docs.djangoproject.com/en/3.1/ref/templates/builtins/#std:templatetag-csrf_token) template tag
 
 # Some details
 
