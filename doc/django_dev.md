@@ -932,9 +932,7 @@ into
 <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
 ```
 
-
-
-### Write a minimal form
+## Write a minimal form
 
 Let us update our `polls/templates/polls/detail.html`:
 
@@ -1008,7 +1006,20 @@ This code includes a few things we haven’t covered yet in this tutorial:
 
   As the Python comment above points out, you should always return an [`HttpResponseRedirect`](https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpResponseRedirect) after successfully dealing with POST data. This tip isn’t specific to Django; it’s good Web development practice in general.
 
-- We are using the [`reverse()`](https://docs.djangoproject.com/en/3.1/ref/urlresolvers/#django.urls.reverse) function in the [`HttpResponseRedirect`](https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpResponseRedirect) constructor in this example. This function helps avoid having to hardcode a URL in the view function. It is given the name of the view that we want to pass control to and the variable portion of the URL pattern that points to that view. In this case, using the URLconf we set up in [Tutorial 3](https://docs.djangoproject.com/en/3.1/intro/tutorial03/), this [`reverse()`](https://docs.djangoproject.com/en/3.1/ref/urlresolvers/#django.urls.reverse) call will return a string like
+- We are using the [`reverse()`](https://docs.djangoproject.com/en/3.1/ref/urlresolvers/#django.urls.reverse) function in the [`HttpResponseRedirect`](https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpResponseRedirect) constructor in this example. 
+
+  - This function helps avoid having to hardcode a URL in the view function. 
+  - It is given the name of the view that we want to pass control to and the variable portion of the URL pattern that points to that view. 
+  - In this case, using the URLconf we set up in [Tutorial 3](https://docs.djangoproject.com/en/3.1/intro/tutorial03/), this [`reverse()`](https://docs.djangoproject.com/en/3.1/ref/urlresolvers/#django.urls.reverse) call will return a string like `/polls/3/results` Where the 3 is the value of `question.id`.  
+  - This redirected URL will then call the `results` view to display the final page. 
+
+As mentioned in Tutorial 3, `request` is an `HttpRequest` object. For more on `HttpRequest` objects, see the `request and response documentation`. 
+
+`/polls/3/result`
+
+where 3 is the value of `question.id`. This redirected URL will then call the `results` view to display the final page.
+
+
 
 
 
