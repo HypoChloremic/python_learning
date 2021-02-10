@@ -1,33 +1,38 @@
 # Shortcuts
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, reverse
 
 # http stuff...
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
 
 # Import the model class object, such that we can 
 # interact with it here
-from .models import Question
+from .models import Question, Choice
 
-def index(request):
-    latest_question_list = Question.objects.order_by("-pub_date")[:5]
-    print(latest_question_list)
-    context = { "latest_question_list": latest_question_list }
-    return render(request, "polls/index.html", context)
+# for the generic views
+from django.views import generic
 
-def detail(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    context = {"question": question}
-    return render(request, "polls/detail.html", context)
+class IndexView(generic.ListView):
+    template_name = "polls/index.html"
+    context_object_name = "latest_question_list"
 
-def results(request, question_id):
-    response = f"You're looking at the results of question {question_id}."
-    return HttpResponse(response)
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Question.objects.order_by("-pub_date")[:5]
+
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = "polls/detail.html"
+
+class ResultsView(generic.DetailView): 
+    model = Question
+    template_name = "polls/results.html"
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
+    
     try:
-        selected_choice = question.Choice_set.get(pk=request.POST("choice"))
+        selected_choice = question.Choice_set.get(pk=request.POST["choice"])
     
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form
@@ -47,20 +52,17 @@ def vote(request, question_id):
 
 
 # def index(request):
-#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-#     index_template = loader.get_template("polls/index.html")
-#     index_context = {
-#         "latest_question_list": latest_question_list,
-#     } 
-#     return HttpResponse(index_template.render(index_context, request))
+#     latest_question_list = Question.objects.order_by("-pub_date")[:5]
+#     print(latest_question_list)
+#     context = { "latest_question_list": latest_question_list }
+#     return render(request, "polls/index.html", context)
 
 # def detail(request, question_id):
-#     try:
-#         question = Question.objects.get(pk=question_id)
-#         context = {"question": question}
-#         print("yoyo")
-#     except Question.DoesNotExist:
-#         # This is where the 404 error occurs, it will exist the 
-#         # method
-#         raise Http404("Question does not existttt")
+#     question = get_object_or_404(Question, pk=question_id)
+#     context = {"question": question}
 #     return render(request, "polls/detail.html", context)
+
+# def results(request, question_id):
+#     question = get_object_or_404(Question, pk=question_id)
+
+#     return render(request, "polls/results.html", {"question": question})
