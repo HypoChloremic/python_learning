@@ -12,13 +12,19 @@ from .models import Question, Choice
 # for the generic views
 from django.views import generic
 
+# The utils
+from django.utils import timezone
+
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
     context_object_name = "latest_question_list"
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Question.objects.order_by("-pub_date")[:5]
+        response = Question.objects.filter(
+            pub_date__lte=timezone.now()
+        ).order_by("-pub_date")[:5]
+        return response
 
 class DetailView(generic.DetailView):
     model = Question

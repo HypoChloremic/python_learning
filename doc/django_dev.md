@@ -1237,7 +1237,284 @@ These are the **basics**. For more details on settings and other bits included w
 
 When you’re comfortable with the static files, read [part 7 of this tutorial](https://docs.djangoproject.com/en/3.1/intro/tutorial07/) to learn how to customize Django’s automatically-generated admin site.
 
-# Some details
+
+
+## Automatic testing
+
+* Tests are routines that check the operation of your code.
+* Testing operates at different levels. Some tests might apply to a tiny detail (*does a particular model method return values as expected?*) while others examine the overall operation of the software (*does a sequence of user inputs on the site produce the desired result?*). That’s no different from the kind of testing you did earlier in [Tutorial 2](https://docs.djangoproject.com/en/3.1/intro/tutorial02/), using the [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell) to examine the behavior of a method, or running the application and entering data to check how it behaves.
+* What’s different in *automated* tests is that the testing work is done for you by the system. You create a set of tests once, and then as you make changes to your app, you can check that your code still works as you originally intended, without having to perform time consuming manual testing.
+
+
+
+### Writing the first test
+
+Fortunately, there’s a little bug in the `polls` application for us to fix right away: the `Question.was_published_recently()` method returns `True` if the `Question` was published within the last day (which is correct) but also if the `Question`’s `pub_date` field is in the future (which certainly isn’t).
+
+
+
+Confirm the bug by using the [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell) to check the method on a question whose date lies in the future:
+
+```python
+$ python manage.py shell
+
+>>> import datetime
+>>> from django.utils import timezone
+>>> from polls.models import Question
+>>> # create a Question instance with pub_date 30 days in the future
+>>> future_question = Question(pub_date=timezone.now() + datetime.timedelta(days=30))
+>>> # was it published recently?
+>>> future_question.was_published_recently()
+True
+```
+
+### Create a test to expose the bug
+
+What we’ve just done in the [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell) to test for the problem is exactly what we can do in an automated test, so let’s turn that into an automated test.
+
+A conventional place for an application’s tests is in the application’s `tests.py` file; the testing system will automatically find tests in any file whose name begins with `test`.
+
+Put the following in the `tests.py` file in the `polls` application:
+
+
+
+`polls/tests.py`
+
+```python
+import datetime
+from django.test import TestCase
+from django.utils import timezone
+
+from .models import Question
+
+# Create your tests here.
+
+class QuestionModelTests(TestCase):
+    def test_was_published_recently_with_future_question(self):
+        """
+        was_published_recently() returns False for questions
+        whose pub_date is in the future
+        """
+
+        time = timezone.now() + datetime.timedelta(days=30)
+        future_question = Question(pub_date=time)
+        self.assertIs(future_question.was_published_recently(), False)
+```
+
+Here we have created a [`django.test.TestCase`](https://docs.djangoproject.com/en/3.1/topics/testing/tools/#django.test.TestCase) subclass with a method that creates a `Question` instance with a `pub_date` in the future. We then check the output of `was_published_recently()` - which *ought* to be False.
+
+
+
+
+
+### Running tests
+
+In the termina, we can  run our test:
+
+```bash
+$ python manage.py test polls
+```
+
+And we get:
+
+```bash
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+F
+======================================================================
+FAIL: test_was_published_recently_with_future_question (polls.tests.QuestionModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/path/to/mysite/polls/tests.py", line 16, in test_was_published_recently_with_future_question
+    self.assertIs(future_question.was_published_recently(), False)
+AssertionError: True is not False
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+Destroying test database for alias 'default'...
+```
+
+What happened is this:
+
+- `manage.py test polls` looked for tests in the `polls` application
+- it found a subclass of the [`django.test.TestCase`](https://docs.djangoproject.com/en/3.1/topics/testing/tools/#django.test.TestCase) class
+- it created a special database for the purpose of testing
+- it looked for test methods - ones whose names begin with `test`
+- in `test_was_published_recently_with_future_question` it created a `Question` instance whose `pub_date` field is 30 days in the future
+- … and using the `assertIs()` method, it discovered that its `was_published_recently()` returns `True`, though we wanted it to return `False`
+
+The test informs us which test failed and even the line on which the failure occurred.
+
+
+
+### Fixing the bug
+
+We already know what the problem is: `Question.was_published_recently()` should return `False` if its `pub_date` is in the future. Amend the method in `models.py`, so that it will only return `True` if the date is also in the past:
+
+`polls/models.py`
+
+```python
+def was_published_recently(self):
+    now = timezone.now()
+    return now - datetime.timedelta(days=1) <= self.pub_date <= now
+```
+
+
+
+
+
+
+
+```bash
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+After identifying a bug, we wrote a test that exposes it and corrected the bug in the code so our test passes.
+
+Many other things might go wrong with our application in the future, but we can be sure that we won’t inadvertently reintroduce this bug, because running the test will warn us immediately. We can consider this little portion of the application pinned down safely forever.
+
+
+
+### More comprehensive tests
+
+While we’re here, we can further pin down the `was_published_recently()` method; in fact, it would be positively embarrassing if in fixing one bug we had introduced another.
+
+Add two more test methods to the same class, to test the behavior of the method more comprehensively:
+
+`polls/tests.py`
+
+```python
+def test_was_published_recently_with_old_question(self):
+    """
+    was_published_recently() returns False for questions whose pub_date
+    is older than 1 day.
+    """
+    time = timezone.now() - datetime.timedelta(days=1, seconds=1)
+    old_question = Question(pub_date=time)
+    self.assertIs(old_question.was_published_recently(), False)
+
+def test_was_published_recently_with_recent_question(self):
+    """
+    was_published_recently() returns True for questions whose pub_date
+    is within the last day.
+    """
+    time = timezone.now() - datetime.timedelta(hours=23, minutes=59, seconds=59)
+    recent_question = Question(pub_date=time)
+    self.assertIs(recent_question.was_published_recently(), True)
+```
+
+### Test a view
+
+The polls application is fairly undiscriminating: it will publish any question, including ones whose `pub_date` field lies in the future. We should improve this. Setting a `pub_date` in the future should mean that the Question is published at that moment, but invisible until then.
+
+### Django test client
+
+
+
+Django provides a test [`Client`](https://docs.djangoproject.com/en/3.1/topics/testing/tools/#django.test.Client) to simulate a user interacting with the code at the view level.  We can use it in `tests.py` or even in the [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell).
+
+We will start again with the [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell), where we need to do a couple of things that won’t be necessary in `tests.py`. The first is to set up the test environment in the [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell):
+
+```python
+$ python manage.py shell
+
+>>> from django.test.utils import setup_test_environment
+>>> setup_test_environment()
+
+```
+
+[`setup_test_environment()`](https://docs.djangoproject.com/en/3.1/topics/testing/advanced/#django.test.utils.setup_test_environment) installs a template renderer which will allow us to examine some additional attributes on responses such as `response.context` that otherwise wouldn’t be available. Note that this method *does not* setup a test database, so the following will be run against the existing database and the output may differ slightly depending on what questions you already created. You might get unexpected results if your `TIME_ZONE` in `settings.py` isn’t correct. If you don’t remember setting it earlier, check it before continuing.
+
+
+
+Next we need to import the test client class (later in `tests.py` we will use the [`django.test.TestCase`](https://docs.djangoproject.com/en/3.1/topics/testing/tools/#django.test.TestCase) class, which comes with its own client, so this won’t be required):
+
+```python
+>>> from django.test import Client
+>>> # create an instance of the client for our use
+>>> client = Client()
+
+```
+
+with that ready, we can ask the client to do some work for us:
+
+```python
+>>> # get a response from '/'
+>>> response = client.get('/')
+Not Found: /
+>>> # we should expect a 404 from that address; if you instead see an
+>>> # "Invalid HTTP_HOST header" error and a 400 response, you probably
+>>> # omitted the setup_test_environment() call described earlier.
+>>> response.status_code
+404
+>>> # on the other hand we should expect to find something at '/polls/'
+>>> # we'll use 'reverse()' rather than a hardcoded URL
+>>> from django.urls import reverse
+>>> response = client.get(reverse('polls:index'))
+>>> response.status_code
+200
+>>> response.content
+b'\n    <ul>\n    \n        <li><a href="/polls/1/">What&#x27;s up?</a></li>\n    \n    </ul>\n\n'
+>>> response.context['latest_question_list']
+<QuerySet [<Question: What's up?>]>
+```
+
+#### Improving our view
+
+The list of polls shows polls that aren’t published yet (i.e. those that have a `pub_date` in the future). Let’s fix that.
+
+In [Tutorial 4](https://docs.djangoproject.com/en/3.1/intro/tutorial04/) we introduced a class-based view, based on [`ListView`](https://docs.djangoproject.com/en/3.1/ref/class-based-views/generic-display/#django.views.generic.list.ListView):
+
+
+
+`polls/views.py`
+
+```python
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Question.objects.order_by('-pub_date')[:5]
+```
+
+We need to amend the `get_queryset()` method and change it so that it also checks the date by comparing it with `timezone.now()`. First we need to add an import:
+
+`polls/views.py`
+
+```python
+from django.utils import timezone
+
+```
+
+and then we mus amend the `get_queryset` method like so:
+
+`polls/views.py`
+
+```python
+def get_queryset(self):
+    """
+    Return the last five published questions (not including those set to be
+    published in the future).
+    """
+    return Question.objects.filter(
+        pub_date__lte=timezone.now()
+    ).order_by('-pub_date')[:5]
+```
+
+`Question.objects.filter(pub_date__lte=timezone.now())` returns a queryset containing `Question`s whose `pub_date` is less than or equal to `timezone.now`.
+
+# My own doc
 
 ## path()
 The `path()` returns an element, which in turn is put inside the 
@@ -1505,3 +1782,57 @@ Reload `http://localhost:8000/polls/` and you should see the background loaded i
 ##### Warning
 
 The `{% static %}` template tag is not available for use in static files which aren’t generated by Django, like your stylesheet. You should always use **relative paths** to link your static files between each other, because then you can change [`STATIC_URL`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-STATIC_URL) (used by the [`static`](https://docs.djangoproject.com/en/3.1/ref/templates/builtins/#std:templatetag-static) template tag to generate its URLs) without having to modify a bunch of paths in your static files as well.
+
+
+
+## Testing in django
+
+### The django test client
+
+Django provides a test [`Client`](https://docs.djangoproject.com/en/3.1/topics/testing/tools/#django.test.Client) to simulate a user interacting with the code at the view level.  We can use it in `tests.py` or even in the [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell).
+
+We will start again with the [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell), where we need to do a couple of things that won’t be necessary in `tests.py`. The first is to set up the test environment in the [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell):
+
+```python
+$ python manage.py shell
+
+>>> from django.test.utils import setup_test_environment
+>>> setup_test_environment()
+
+```
+
+[`setup_test_environment()`](https://docs.djangoproject.com/en/3.1/topics/testing/advanced/#django.test.utils.setup_test_environment) installs a template renderer which will allow us to examine some additional attributes on responses such as `response.context` that otherwise wouldn’t be available. Note that this method *does not* setup a test database, so the following will be run against the existing database and the output may differ slightly depending on what questions you already created. You might get unexpected results if your `TIME_ZONE` in `settings.py` isn’t correct. If you don’t remember setting it earlier, check it before continuing.
+
+
+
+Next we need to import the test client class (later in `tests.py` we will use the [`django.test.TestCase`](https://docs.djangoproject.com/en/3.1/topics/testing/tools/#django.test.TestCase) class, which comes with its own client, so this won’t be required):
+
+```python
+>>> from django.test import Client
+>>> # create an instance of the client for our use
+>>> client = Client()
+
+```
+
+with that ready, we can ask the client to do some work for us:
+
+```python
+>>> # get a response from '/'
+>>> response = client.get('/')
+Not Found: /
+>>> # we should expect a 404 from that address; if you instead see an
+>>> # "Invalid HTTP_HOST header" error and a 400 response, you probably
+>>> # omitted the setup_test_environment() call described earlier.
+>>> response.status_code
+404
+>>> # on the other hand we should expect to find something at '/polls/'
+>>> # we'll use 'reverse()' rather than a hardcoded URL
+>>> from django.urls import reverse
+>>> response = client.get(reverse('polls:index'))
+>>> response.status_code
+200
+>>> response.content
+b'\n    <ul>\n    \n        <li><a href="/polls/1/">What&#x27;s up?</a></li>\n    \n    </ul>\n\n'
+>>> response.context['latest_question_list']
+<QuerySet [<Question: What's up?>]>
+```
