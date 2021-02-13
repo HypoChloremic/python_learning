@@ -1514,6 +1514,155 @@ def get_queryset(self):
 
 `Question.objects.filter(pub_date__lte=timezone.now())` returns a queryset containing `Question`s whose `pub_date` is less than or equal to `timezone.now`.
 
+
+
+### Testing our new view
+
+Now you can satisfy yourself that this behaves as expected by firing up `runserver`, loading the site in your browser, creating `Questions` with dates in the past and future, and checking that only those that have been published are listed. You don’t want to have to do that *every single time you make any change that might affect this* - so let’s also create a test, based on our [`shell`](https://docs.djangoproject.com/en/3.1/ref/django-admin/#django-admin-shell) session above.
+
+add the following to `polls/tests.py`
+
+```python
+from django.urls import reverse
+```
+
+and we will create a shortcut function to create questions as well as a new test class:
+
+`polls/tests.py`
+
+```python
+def create_question(question_text, days):
+    """
+    Create a question with the given `question_text` and published the
+    given number of `days` offset to now (negative for questions published
+    in the past, positive for questions that have yet to be published).
+    """
+    time = timezone.now() + datetime.timedelta(days=days)
+    return Question.objects.create(question_text=question_text, pub_date=time)
+
+
+class QuestionIndexViewTests(TestCase):
+    def test_no_questions(self):
+        """
+        If no questions exist, an appropriate message is displayed.
+        """
+        response = self.client.get(reverse('polls:index'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "No polls are available.")
+        self.assertQuerysetEqual(response.context['latest_question_list'], [])
+
+    def test_past_question(self):
+        """
+        Questions with a pub_date in the past are displayed on the
+        index page.
+        """
+        create_question(question_text="Past question.", days=-30)
+        response = self.client.get(reverse('polls:index'))
+        self.assertQuerysetEqual(
+            response.context['latest_question_list'],
+            ['<Question: Past question.>']
+        )
+
+    def test_future_question(self):
+        """
+        Questions with a pub_date in the future aren't displayed on
+        the index page.
+        """
+        create_question(question_text="Future question.", days=30)
+        response = self.client.get(reverse('polls:index'))
+        self.assertContains(response, "No polls are available.")
+        self.assertQuerysetEqual(response.context['latest_question_list'], [])
+
+    def test_future_question_and_past_question(self):
+        """
+        Even if both past and future questions exist, only past questions
+        are displayed.
+        """
+        create_question(question_text="Past question.", days=-30)
+        create_question(question_text="Future question.", days=30)
+        response = self.client.get(reverse('polls:index'))
+        self.assertQuerysetEqual(
+            response.context['latest_question_list'],
+            ['<Question: Past question.>']
+        )
+
+    def test_two_past_questions(self):
+        """
+        The questions index page may display multiple questions.
+        """
+        create_question(question_text="Past question 1.", days=-30)
+        create_question(question_text="Past question 2.", days=-5)
+        response = self.client.get(reverse('polls:index'))
+        self.assertQuerysetEqual(
+            response.context['latest_question_list'],
+            ['<Question: Past question 2.>', '<Question: Past question 1.>']
+        )
+```
+
+
+
+Let’s look at some of these more closely.
+
+* First is a question shortcut function, `create_question`, to take some repetition out of the process of creating questions.
+* `test_no_questions` doesn’t create any questions, but checks the message: “No polls are available.” and verifies the `latest_question_list` is empty. 
+* Note that the [`django.test.TestCase`](https://docs.djangoproject.com/en/3.1/topics/testing/tools/#django.test.TestCase) class provides some additional assertion methods. 
+* In these examples, we use [`assertContains()`](https://docs.djangoproject.com/en/3.1/topics/testing/tools/#django.test.SimpleTestCase.assertContains) and [`assertQuerysetEqual()`](https://docs.djangoproject.com/en/3.1/topics/testing/tools/#django.test.TransactionTestCase.assertQuerysetEqual).
+* In `test_past_question`, we create a question and verify that it appears in the list.
+* In `test_future_question`, we create a question with a `pub_date` in the future. 
+* The database is reset for each test method, so the first question is no longer there, and so again the index shouldn’t have any questions in it.
+* And so on. 
+* In effect, we are using the tests to tell a story of admin input and user experience on the site, 
+  * and checking that at every state and for every new change in the state of the system, the expected results are published.
+
+
+
+### Testing the DetailView
+
+What we have works well; however, even though future questions don’t appear in the *index*, users can still reach them if they know or guess the right URL. So we need to add a similar  constraint to `DetailView`:
+
+`polls/views.py`
+
+```python
+class DetailView(generic.DetailView):
+    # ...
+    
+    def get_queryset(self):
+        """
+        Excludes any questions that aren't published yet.
+        """
+        return Question.objects.filter(pub_date__lte=timezone.now())
+    
+```
+
+We should then add some tests, to check that a `Question` whose `pub_date` is in the past can be displayed, and that one with a `pub_date` in the future is not:
+
+`polls/tests.py`
+
+```python
+class QuestionDetailViewTests(TestCase):
+    def test_future_question(self):
+        """
+        The detail view of a question with a pub_date in the future
+        returns a 404 not found.
+        """
+        future_question = create_question(question_text='Future question.', days=5)
+        url = reverse('polls:detail', args=(future_question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_past_question(self):
+        """
+        The detail view of a question with a pub_date in the past
+        displays the question's text.
+        """
+        past_question = create_question(question_text='Past Question.', days=-5)
+        url = reverse('polls:detail', args=(past_question.id,))
+        response = self.client.get(url)
+        self.assertContains(response, past_question.question_text)
+```
+
+
+
 # My own doc
 
 ## path()
@@ -1836,3 +1985,62 @@ b'\n    <ul>\n    \n        <li><a href="/polls/1/">What&#x27;s up?</a></li>\n  
 >>> response.context['latest_question_list']
 <QuerySet [<Question: What's up?>]>
 ```
+
+## Admin stuff
+
+### The Django admin
+
+* Generating admin sites for your staff or clients to add, change, and delete content is tedious work that doesn’t require much creativity. 
+* For that reason, Django entirely automates creation of admin interfaces for models.
+* Django was written in a newsroom environment, with a very clear separation between “content publishers” and the “public” site. 
+* Site managers use the system to add news stories, events, sports scores, etc., and that content is displayed on the public site. 
+* Django solves the problem of creating a unified interface for site administrators to edit content.
+* The admin isn’t intended to be used by site visitors. It’s for site managers.
+
+
+
+#### Creating an admin user
+
+Need a user who can login to the admin site: Run the following:
+
+```bash
+$ python manage.py createsuperuser
+
+username: admin
+email address: admin@example.com
+Password: *******
+Password (again): ******
+Superuser created successfully
+```
+
+#### Start the (development) server
+
+* Let us run the server now: `python manage.py runserver`
+* and go to the admin page `http://127.0.0.1:8000/admin/`
+* and sign in. 
+
+
+
+#### Inside the admin page
+
+We are presented by "editable content": `groups` and `users`. These are provided by `django.contrib.auth`
+
+
+
+#### Making an app modifiable in the admin
+
+* Seemingly the app is not displayed seemingly on the admin index page. 
+
+* We need to tell the admin that Question objects have an admin interface. 
+* To do this, open the `polls/admin.py` file, and edit it to look like this:
+
+```python
+from django.contrib import admin
+
+from .models import Question
+
+admin.site.register(Question)
+```
+
+Save it to file, and just reload the admin page, and we will se it on the admin index page! 
+
