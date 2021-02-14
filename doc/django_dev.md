@@ -1906,6 +1906,221 @@ With that `TabularInline` (instead of `StackedInline`), the related objects are 
 
 Note that there is an extra "Delete?"  column that allows removing rows added using the "Add Another Choice" button and rows that have already been saved. 
 
+
+
+Now that the Question admin page is looking good, let’s make some tweaks to the “change list” page – the one that displays all the questions in the system.
+
+Here’s what it looks like at this point:
+
+<img src="./imgs/learn_W3VV7CSaWj.png" alt="W3VV7CSaWj" style="zoom:50%;" />
+
+
+
+* By default, Django displays the `str()` of each object.
+* But sometimes it’d be more helpful if we could display individual fields. 
+* To do that, use the [`list_display`](https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.list_display) admin option, 
+  * which is a tuple of field names to display, as columns, on the change list page for the object:
+
+
+
+`polls/admin.py`
+
+```python
+class QuestionAdmin(admin.ModelAdmin):
+    # ...
+    list_display = ('question_text', 'pub_date')
+    
+```
+
+For good measure, let’s also include the `was_published_recently()` method from [Tutorial 2](https://docs.djangoproject.com/en/3.1/intro/tutorial02/):
+
+
+
+`polls/admin.py`
+
+```python
+class QuestionAdmin(admin.ModelAdmin):
+    # ...
+    list_display = ('question_text', 'pub_date', 'was_published_recently')
+```
+
+Now the question change list page looks like this:
+
+
+
+<img src="./imgs/learn_LFBJgE19mH.png" alt="LFBJgE19mH" style="zoom: 50%;" />
+
+
+
+* You can click on the column headers to sort by those values – 
+  * except in the case of the `was_published_recently` header, 
+  * because sorting by the output of an arbitrary method is not supported. 
+* Also note that the column header for `was_published_recently` is, 
+  * by default, the name of the method (with underscores replaced with spaces), 
+  * and that each line contains the string representation of the output.
+
+
+
+`polls/models.py`
+
+```python
+class Question(models.Model):
+    # ...
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Published recently?'
+
+```
+
+Edit your `polls/admin.py` file again and add an improvement to the `Question` change list page: filters using the [`list_filter`](https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.list_filter). Add the following line to `QuestionAdmin`:
+
+`polls/admin.py`
+
+```python
+class QustionAdmin(admin.ModelAdmin):
+    # ...
+    list_filter = ["pub_date"]
+    
+```
+
+<img src="./imgs/learn_DNXmM7HeSW.png" alt="DNXmM7HeSW" style="zoom:50%;" />
+
+
+
+The type of filter displayed depends on the type of field you’re filtering on. Because `pub_date` is a [`DateTimeField`](https://docs.djangoproject.com/en/3.1/ref/models/fields/#django.db.models.DateTimeField), Django knows to give appropriate filter options: “Any date”, “Today”, “Past 7 days”, “This month”, “This year”.
+
+This is shaping up well. Let’s add some search capability:
+
+```python
+# ...
+search_fields = ["question_text"]
+
+```
+
+<img src="./imgs/learn_tFfqsNrZ91.png" alt="tFfqsNrZ91" style="zoom:50%;" />
+
+
+
+You can use as many fields as you’d like – although because it uses a `LIKE` query behind the scenes, limiting the number of search fields to a reasonable number will make it easier for your database to do the search.
+
+
+
+### Changing admin look and feel
+
+* Create a `templates` directory in your project directory (the one that contains `manage.py`). 
+  * `./mysite/templates`
+  * ![IlXRM7pe5p](./imgs/learn_IlXRM7pe5p.png)
+* Templates can live anywhere on your filesystem that Django can access. 
+* (Django runs as whatever user your server runs.) 
+* ***However, keeping your templates within the project is a good convention to follow.***
+
+
+
+Open your settings file (`mysite/settings.py`, remember) and add a [`DIRS`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-TEMPLATES-DIRS) option in the [`TEMPLATES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-TEMPLATES) setting:
+
+`mysite/mysite/settings.py`
+
+```python
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'], # This is the new part, BASE_DIR is defined before this 
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+```
+
+* [`DIRS`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-TEMPLATES-DIRS) is a list of filesystem directories to check when loading Django templates; it’s a search path.
+
+
+
+Now create a directory called `admin` inside `templates`, `mysite [root ya3ni]/templates/admin/`
+
+* and copy the template `admin/base_site.html` from within the default Django admin template directory in the source code of Django itself (`django/contrib/admin/templates`) into that directory.
+  * In our case: `./envs/webdev/lib/python3.8/site-packages/django/contrib/admin/templates/admin/base_site.html`
+  * With other words create a corresponding file: `mysite [root]/tempalates/admin/base_site.html`
+* Where are the Django source files: `$ python -c "import django; print(django.__path__)"`
+
+
+
+Then, edit the file and replace `{{ site_header|default:_('Django administration') }}` (including the curly braces) with your own site’s name as you see fit. You should end up with of code like:
+
+`mysite/templates/admin/base_site.html`
+
+```html
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Polls Administration</a></h1> 
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+```
+
+Note the "Polls Administration" part, that is the new part. 
+
+
+
+We use this approach to teach you how to override templates. 
+
+* In an actual project, you would probably use the [`django.contrib.admin.AdminSite.site_header`](https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#django.contrib.admin.AdminSite.site_header) attribute to more easily make this particular customization.
+
+
+
+### Customizing your *application's* templates
+
+* But if [`DIRS`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-TEMPLATES-DIRS) was empty by default, how was Django finding the default admin templates? 
+* The answer is that, since [`APP_DIRS`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-TEMPLATES-APP_DIRS) is set to `True`, Django automatically looks for a `templates/` subdirectory within each application package, for use as a fallback 
+  * (don’t forget that `django.contrib.admin` is an application).
+* Our poll application is not very complex and doesn’t need custom admin templates. 
+* But if it grew more sophisticated and required modification of Django’s standard admin templates for some of its functionality, 
+  * it would be more sensible to modify the *application’s* templates, rather than those in the *project*. 
+  * That way, you could include the polls application in any new project and be assured that it would find the custom templates it needed.
+
+See the [template loading documentation](https://docs.djangoproject.com/en/3.1/topics/templates/#template-loading) for more information about how Django finds its templates.
+
+
+
+### Customizing the admin index page
+
+On a similar note, you might want to customize the look and feel of the Django admin index page.
+
+By default, it displays all the apps in [`INSTALLED_APPS`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-INSTALLED_APPS) that have been registered with the admin application, in alphabetical order. You may want to make significant changes to the layout. After all, the index is probably the most important page of the admin, and it should be easy to use.
+
+The template to customize is `admin/index.html`(or more preciesly `mysite/templates/admin/index.html`). 
+
+* (Do the same as with `admin/base_site.html` in the previous section – 
+* copy it from the default directory to your custom template directory). 
+* Edit the file, and you’ll see it uses a template variable called `app_list`. 
+* That variable contains every installed Django app. 
+* Instead of using that, you can hard-code links to object-specific admin pages in whatever way you think is best.
+
+
+
+
+
+https://docs.djangoproject.com/en/3.1/intro/whatsnext/
+
+# Reusable apps
+
+
+
+
+
 # My own doc
 
 ## path()
@@ -1928,7 +2143,7 @@ path(route='index', view=include('polls.urls'))
 
 what `include('polls.urls')` will then do is to go into the import path of `polls.urls` and then 
 
-## django views
+## Views
 `views` in django is key for *apps*, built in django. Simplified take: 
 * a function/class takes a ***web request*** and returns a ***web response***
 
@@ -1962,7 +2177,25 @@ def current_datetime(request):
 
 So this script can be stored anywhere on the Python path, ***Implying that it should be somewhere where we can use `import`*** 
 
+
+
+## Template language in Django
+
+
+
+Text like:
+
+* `{% block branding %}` and `{{ title }}`. 
+* The `{%` and `{{` tags are part of Django’s template language. 
+* When Django renders a template this template language will be evaluated to produce the final HTML page, 
+* just like we saw in [Tutorial 3](https://docs.djangoproject.com/en/3.1/intro/tutorial03/).
+
+
+
+
+
 ## models.ForeignKey
+
 In the tutorial, we write in the `Choice` class the following:
 `question = models.ForeignKey(Question, on_delete = models.CASCADE)`
 
