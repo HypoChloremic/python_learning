@@ -134,3 +134,45 @@ with gzip.open('gile.gzip', 'r') as file:
 		print(line)
 
 ````
+
+# Decorators
+
+## Basics
+
+```python
+import functools
+
+def decorator(func):
+    
+    @functools.wraps(func)
+    def wrapper_decorator(*args, **kwargs):
+        # ...
+        
+        value = func(*args, **kwargs)
+        
+        # ...
+        return value
+    
+    return wrapper_decorator
+```
+
+## Decorators inside classes
+
+```python
+import functools
+class SomeClass:
+    def Decorator(func):
+        @functools.wraps
+        def wrapper(self, *args, **kwargs):
+            #...
+            returned = func(self, *args, **kwargs)
+            #...
+            return returned
+        return wrapper
+    
+    @Decorator
+    def some_func(self, ..., ...):
+        return "blabla"
+```
+
+Note how we isolate the `self` argument when creating the `Decorator()`. This such that we may access the self keyword of the class, and all of the associated objects, when using the `Decorator`. 
