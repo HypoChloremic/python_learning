@@ -177,6 +177,83 @@ class SomeClass:
 
 Note how we isolate the `self` argument when creating the `Decorator()`. This such that we may access the self keyword of the class, and all of the associated objects, when using the `Decorator`. 
 
+### static_method
+
+Say we want to create a generic utils class that cwill contain some methods. Say that we do not want to instantiate the class but use the methods inside of it statically directly, then we can use @static_method:
+
+```python
+class UtilClass:
+    @staticmethod
+    def adder()->int:
+        return 1+2
+
+
+if __name__ == "__main__"
+	UtilClass.adder() # will directly run the method. 
+
+```
+
+
+
+### class_method
+
+Say we would like to perform unittesting on a class and activate a debug mode in a generic and controllable way, we can use class_method
+
+```python
+class UtilClass:
+    """Util class for processing patient information"""
+    debug = False  # Class attribute for debug mode
+
+    @classmethod
+    def enable_debug(cls):
+        cls.debug = True
+
+    @classmethod
+    def disable_debug(cls):
+        cls.debug = False
+
+    @staticmethod
+    def adder()->int:
+        return 1+2
+
+
+if __name__ == "__main__"
+	UtilClass.adder() # will directly run the method. 
+```
+
+Then to activate the debug mode in a unittest:
+
+```python
+import unittest
+from unittest.mock import patch
+from yourapp.utils import PatientInformationProcessor
+
+class PatientInformationProcessorTest(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        PatientInformationProcessor.enable_debug()
+
+    @classmethod
+    def tearDownClass(cls):
+        PatientInformationProcessor.disable_debug()
+        super().tearDownClass()
+
+    @patch('yourapp.utils.logger')
+    def test_logic_checker_debug_logging(self, mock_logger):
+        # Assuming FormModel is a mock or a suitable test instance
+        test_form_model = MockFormModel()  # Replace with an actual instance or mock
+        PatientInformationProcessor.logic_checker(test_form_model)
+
+        # Assert that the logger.info was called with the expected debug message
+        mock_logger.info.assert_called_with("logic_checker: Debug mode is enabled")
+
+# Replace `yourapp.utils` with the actual path to your utils module
+```
+
+
+
 # Virtualenv
 
 To use Python virtual environments (virtualenv) in Linux, follow these steps:
@@ -220,3 +297,58 @@ To use Python virtual environments (virtualenv) in Linux, follow these steps:
    The virtual environment will be deactivated, and you will return to your system's default Python environment.
 
 Using a virtual environment allows you to isolate dependencies for different projects, avoiding conflicts and ensuring project-specific package versions. You can create and activate multiple virtual environments as needed for different projects.
+
+
+
+# Pythonic code, Raymond Hettinger
+
+### Creating pythonic code
+
+#### PEP8
+
+#### Recurring setup and teardown logic
+
+* When there is recurring setup and teardown logic, use the `with` statement
+* This implies the implementation of `__enter__` and `__exit__` in the class statements. 
+* We should therefore build a ***context manager*** to use the with statement
+
+#### Where package imports make single module
+
+Sometimes we can find the following:
+
+```python
+import jnettools.tools.element.NetworkElement
+import jnettools.tools.Routing
+import jnettools.tools.RouteInspector
+```
+
+These package imports are non-pythonic. Instead we should a ***single module*** such that it is easier to import everything. 
+
+#### Looping over sequences by index
+
+Consider the following example code
+
+```python
+num_routes = routing_table.getSize()
+for RToffset in range(num_routes):
+	route = routing_tagble.getRouteByIndex(RToffset)
+	name = route.getName()
+	ipaddr = route.getIPAddr()
+```
+
+Here we see several aspects that can be corrected and fixed. 
+
+* `.getSize()`: Whenever we are getting somethings size, we should implement the `len` function instead
+* `.getRouteByIndex(RToffset)`: we should never make a function call where we provide the index of something. Instead we should implement the square brackets `[...]` functionality.
+* `.getName` or `.getIPAddr`: these should be properties instead of function calls. 
+
+##### Sequences
+
+Anything that can be looped over with an index, raises IndexError if looped too far and can do a `len` on is a `sequence`
+
+* These are sequences in python
+  * strings
+  * lists
+  * ...
+* These have a common propety:
+  * they are `iterables`

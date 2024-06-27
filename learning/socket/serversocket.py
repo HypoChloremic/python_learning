@@ -7,7 +7,7 @@ def Main():
     port = 5000
     # This creates the socket, seemingly we are not 
     # parsing in any arguments, which will be seen in other examples. 
-	mySocket = socket.socket()
+    mySocket = socket.socket()
 
 	# This binds the socket to the host and port, which 
 	# dedicates the socket to that host and port.
